@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/tailwind.css" />
+    <title>Parks.pt</title>
+  </head>
+  <body>
+    <nav class="mt-2 mb-2">
+      <div class="pl-2">Parks.pt</div>
+    </nav>
+    <div class="container mx-auto">
+      <div class="w-full p-2 flex flex-col gap-4">
+        
+        <img
+          class="w-full h-48 object-cover shrink-0"
+          src="/assets/images/parks/braga/02/01.jpg"
+          alt="Imagen de Braga"
+        />
+        
+        <img
+          class="w-full h-48 object-cover shrink-0"
+          src="/assets/images/parks/braga/02/02.jpg"
+          alt="Imagen de Braga"
+        />
+        
+        <img
+          class="w-full h-48 object-cover shrink-0"
+          src="/assets/images/parks/braga/02/03.jpg"
+          alt="Imagen de Braga"
+        />
+        
+        <img
+          class="w-full h-48 object-cover shrink-0"
+          src="/assets/images/parks/braga/02/04.jpg"
+          alt="Imagen de Braga"
+        />
+        
+        <img
+          class="w-full h-48 object-cover shrink-0"
+          src="/assets/images/parks/braga/02/05.jpg"
+          alt="Imagen de Braga"
+        />
+        
+        <img
+          class="w-full h-48 object-cover shrink-0"
+          src="/assets/images/parks/braga/02/06.jpg"
+          alt="Imagen de Braga"
+        />
+        
+        <img
+          class="w-full h-48 object-cover shrink-0"
+          src="/assets/images/parks/braga/02/07.jpg"
+          alt="Imagen de Braga"
+        />
+        
+      </div>
+    </div>
+  </body>
+</html>
