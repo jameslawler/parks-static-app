@@ -668,12 +668,8 @@ video {
   height: 7rem;
 }
 
-.h-48 {
-  height: 12rem;
-}
-
-.h-56 {
-  height: 14rem;
+.h-72 {
+  height: 18rem;
 }
 
 .h-full {
