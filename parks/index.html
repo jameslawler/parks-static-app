@@ -3,6 +3,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/assets/css/tailwind.css" />
     <title>Parks.pt</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
   </head>
   <body>
     <nav class="flex flex-row mt-2 mb-2">
@@ -41,8 +53,13 @@
   </label>
 </nav>
 
-    <div class="container mx-auto">
-      <div class="w-full h-16 bg-gray-300">
+    <div
+      class="container mx-auto"
+      x-data="parks"
+      x-init="getData('child')"
+      x-effect="updateMapMarkers(filteredParks())"
+    >
+      <div class="w-full h-16 bg-gray-300 flex">
         <div class="dropdown">
           <div tabindex="0" role="button" class="btn btn-outline m-1">
             Equipment
@@ -69,18 +86,37 @@
             tabindex="0"
             class="form-control dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
           >
+            
             <label class="label cursor-pointer">
-              <span class="label-text">Remember me</span>
-              <input type="checkbox" checked="checked" class="checkbox" />
+              <span class="label-text">Swings</span>
+              <input
+                type="checkbox"
+                class="checkbox"
+                value="swing"
+                x-model="filter.equipment"
+              />
             </label>
+            
             <label class="label cursor-pointer">
-              <span class="label-text">Remember me 2</span>
-              <input type="checkbox" class="checkbox" />
+              <span class="label-text">Slides</span>
+              <input
+                type="checkbox"
+                class="checkbox"
+                value="slide"
+                x-model="filter.equipment"
+              />
             </label>
+            
             <label class="label cursor-pointer">
-              <span class="label-text">Remember me 3</span>
-              <input type="checkbox" checked="checked" class="checkbox" />
+              <span class="label-text">Play House</span>
+              <input
+                type="checkbox"
+                class="checkbox"
+                value="play-house"
+                x-model="filter.equipment"
+              />
             </label>
+            
           </div>
         </div>
         <div class="dropdown">
@@ -109,52 +145,147 @@
             tabindex="0"
             class="form-control dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
           >
+            
             <label class="label cursor-pointer">
-              <span class="label-text">Remember me</span>
-              <input type="checkbox" checked="checked" class="checkbox" />
+              <span class="label-text">Water Fountain</span>
+              <input
+                type="checkbox"
+                class="checkbox"
+                value="water-fountain"
+                x-model="filter.facilities"
+              />
             </label>
+            
             <label class="label cursor-pointer">
-              <span class="label-text">Remember me 2</span>
-              <input type="checkbox" class="checkbox" />
+              <span class="label-text">Sitting</span>
+              <input
+                type="checkbox"
+                class="checkbox"
+                value="seating"
+                x-model="filter.facilities"
+              />
             </label>
+            
             <label class="label cursor-pointer">
-              <span class="label-text">Remember me 3</span>
-              <input type="checkbox" checked="checked" class="checkbox" />
+              <span class="label-text">Tree shade</span>
+              <input
+                type="checkbox"
+                class="checkbox"
+                value="tree-cover"
+                x-model="filter.facilities"
+              />
             </label>
+            
           </div>
         </div>
+        <button
+          class="btn btn-circle"
+          x-show="isListView"
+          x-on:click="isListView = false"
+        >
+          Map
+        </button>
+        <button
+          class="btn btn-circle"
+          x-show="!isListView"
+          x-on:click="isListView = true"
+        >
+          List
+        </button>
       </div>
       <div class="flex flex-col gap-4 p-2">
-        
-        <div class="w-full shrink-0 mb-4">
-          <a href="/parks/braga/01/">
-            <img
-              class="object-cover rounded-lg w-full h-72 mb-2"
-              src="/assets/images/parks/braga/01/01.jpg"
-            />
-            <div class="font-bold text-sm">Parque infantil da Praça da Justiça</div>
-            <div class="text-sm">
-              Praça da Justiça 155,
-              Braga
+        <div x-show="isLoading">Loading ...</div>
+        <div x-show="isListView">
+          <template
+            x-for="park in filteredParks"
+            x-bind:key="park.name"
+            x-show="!isLoading"
+          >
+            <div class="w-full shrink-0 mb-4">
+              <a x-bind:href="park.url">
+                <img
+                  class="object-cover rounded-lg w-full h-72 mb-2"
+                  x-bind:src="'/assets/images' + park.url + '01.jpg'"
+                />
+                <div class="font-bold text-sm" x-text="park.name"></div>
+                <div
+                  class="text-sm"
+                  x-text="`${park.filterMatches} ${park.location_street_address}, ${park.location_city}`"
+                ></div>
+              </a>
             </div>
-          </a>
+          </template>
         </div>
-        
-        <div class="w-full shrink-0 mb-4">
-          <a href="/parks/braga/02/">
-            <img
-              class="object-cover rounded-lg w-full h-72 mb-2"
-              src="/assets/images/parks/braga/02/01.jpg"
-            />
-            <div class="font-bold text-sm">Parque Infantil do Bom Jesus</div>
-            <div class="text-sm">
-              Parque Bom Jesus, estrada de Bom Jesus,
-              Braga
-            </div>
-          </a>
+        <div x-show="!isListView" class="relative">
+          <div id="map" class="absolute top-0 left-0 w-screen h-screen"></div>
         </div>
-        
       </div>
     </div>
+
+    <script>
+      const map = L.map("map").setView([41.5551463, -8.41272], 13);
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }).addTo(map);
+
+      document.addEventListener("alpine:init", () => {
+        Alpine.data("parks", () => ({
+          data: [],
+          isLoading: false,
+          isListView: true,
+          filterType: "child",
+          filter: { facilities: [], equipment: [] },
+          filteredParks() {
+            return this.data
+              .map((park) => {
+                const facilitiesMatched = this.filter.facilities.every((f) =>
+                  park.facilities.includes(f)
+                );
+                const equipmentMatched = this.filter.equipment.every((e) =>
+                  park.equipment.includes(e)
+                );
+
+                return {
+                  ...park,
+                  filtersMatched: facilitiesMatched && equipmentMatched,
+                };
+              })
+              .filter((park) => park.filtersMatched);
+          },
+          updateMapMarkers(filteredParks) {
+            for (park of this.data) {
+              if (
+                filteredParks.some(
+                  (filteredPark) => park.url === filteredPark.url
+                )
+              ) {
+                if (!map.hasLayer(park.mapMarker)) {
+                  map.addLayer(park.mapMarker);
+                }
+              } else {
+                if (map.hasLayer(park.mapMarker)) {
+                  map.removeLayer(park.mapMarker);
+                }
+              }
+            }
+          },
+          getData(filterType) {
+            this.filterType = filterType;
+            this.isLoading = true;
+            fetch("/parks-all.json")
+              .then((response) => response.json())
+              .then((data) => {
+                this.data = data.map((park) => ({
+                  ...park,
+                  mapMarker: new L.marker([park.latitude, park.longitude]),
+                }));
+                this.isLoading = false;
+              });
+          },
+        }));
+      });
+    </script>
   </body>
 </html>
