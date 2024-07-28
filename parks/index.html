@@ -22,12 +22,12 @@
     </style>
   </head>
   <body>
-    <nav class="flex flex-row pb-2 mt-2 mb-2 border-gray-100 border-b-2">
+    <nav class="flex flex-row py-2 mt-2 mb-2">
   <div class="pl-2 flex-grow text-lg font-bold"><a href="/">Parks.pt</a></div>
 </nav>
 
     <div
-      class="container mx-auto"
+      class="container mx-auto border-gray-100 border-t-2"
       x-data="parks"
       x-init="getData('playground')"
       x-effect="updateMapMarkers(filteredParks())"
@@ -53,7 +53,7 @@
                 type="radio"
                 class="radio"
                 value="playground"
-                x-model="type"
+                x-model="typeTemp"
               />
             </label>
             
@@ -63,7 +63,7 @@
                 type="radio"
                 class="radio"
                 value="animal-park"
-                x-model="type"
+                x-model="typeTemp"
               />
             </label>
             
@@ -73,7 +73,7 @@
                 type="radio"
                 class="radio"
                 value="exercise-park"
-                x-model="type"
+                x-model="typeTemp"
               />
             </label>
             
@@ -83,7 +83,7 @@
                 type="radio"
                 class="radio"
                 value="skate-park"
-                x-model="type"
+                x-model="typeTemp"
               />
             </label>
             
@@ -93,7 +93,7 @@
                 type="radio"
                 class="radio"
                 value="sport-park"
-                x-model="type"
+                x-model="typeTemp"
               />
             </label>
             
@@ -103,10 +103,16 @@
                 type="radio"
                 class="radio"
                 value="nature-park"
-                x-model="type"
+                x-model="typeTemp"
               />
             </label>
             
+            <div
+              class="btn btn-sm btn-primary mt-4"
+              x-on:click="updateType(); document.activeElement?.blur()"
+            >
+              Apply
+            </div>
           </div>
         </div>
         <div class="dropdown">
@@ -120,8 +126,42 @@
           </div>
           <div
             tabindex="0"
-            class="form-control dropdown-content z-[1200] menu p-2 shadow bg-base-100 rounded-box w-52"
+            class="form-control dropdown-content left-1/2 -translate-x-1/2 z-[1200] menu p-2 shadow bg-base-100 rounded-box w-72"
           >
+            <label class="label font-bold">Equipment</label>
+            
+            <label class="label cursor-pointer">
+              <span class="label-text">Swings</span>
+              <input
+                type="checkbox"
+                class="checkbox"
+                value="swing"
+                x-model="filterTemp.equipment"
+              />
+            </label>
+            
+            <label class="label cursor-pointer">
+              <span class="label-text">Slides</span>
+              <input
+                type="checkbox"
+                class="checkbox"
+                value="slide"
+                x-model="filterTemp.equipment"
+              />
+            </label>
+            
+            <label class="label cursor-pointer">
+              <span class="label-text">Play House</span>
+              <input
+                type="checkbox"
+                class="checkbox"
+                value="play-house"
+                x-model="filterTemp.equipment"
+              />
+            </label>
+            
+
+            <label class="label font-bold mt-4">Facilities</label>
             
             <label class="label cursor-pointer">
               <span class="label-text">Water Fountain</span>
@@ -129,7 +169,7 @@
                 type="checkbox"
                 class="checkbox"
                 value="water-fountain"
-                x-model="filter.facilities"
+                x-model="filterTemp.facilities"
               />
             </label>
             
@@ -139,7 +179,7 @@
                 type="checkbox"
                 class="checkbox"
                 value="seating"
-                x-model="filter.facilities"
+                x-model="filterTemp.facilities"
               />
             </label>
             
@@ -149,10 +189,16 @@
                 type="checkbox"
                 class="checkbox"
                 value="tree-cover"
-                x-model="filter.facilities"
+                x-model="filterTemp.facilities"
               />
             </label>
             
+            <div
+              class="btn btn-sm btn-primary mt-4"
+              x-on:click="updateFilter(); document.activeElement?.blur()"
+            >
+              Apply
+            </div>
           </div>
         </div>
         <button
@@ -170,9 +216,15 @@
           List
         </button>
       </div>
-      <div class="flex flex-col gap-4 p-2">
+      <div class="flex flex-col gap-4 px-2">
         <div x-show="isLoading">Loading ...</div>
         <div x-show="isListView">
+          <div x-show="filteredParks().length === 0" class="mt-4 text-center">
+            <span>No parks found with your filters</span>
+            <div class="mt-4 link" x-on:click="clearFilter()">
+              Clear filters
+            </div>
+          </div>
           <template
             x-for="park in filteredParks"
             x-bind:key="park.name"
@@ -193,9 +245,9 @@
             </div>
           </template>
         </div>
-        <div x-show="!isListView" class="relative">
-          <div id="map" class="absolute top-0 left-0 w-screen h-screen"></div>
-        </div>
+      </div>
+      <div x-show="!isListView">
+        <div id="map" class="top-0 left-0 h-screen"></div>
       </div>
     </div>
 
@@ -214,7 +266,9 @@
           isLoading: false,
           isListView: true,
           type: "playground",
+          typeTemp: "playground",
           filter: { facilities: [], equipment: [] },
+          filterTemp: { facilities: [], equipment: [] },
           filteredParks() {
             return this.data
               .map((park) => {
@@ -231,6 +285,16 @@
                 };
               })
               .filter((park) => park.filtersMatched);
+          },
+          updateFilter() {
+            this.filter = { ...this.filterTemp };
+          },
+          clearFilter() {
+            this.filter = { facilities: [], equipment: [] };
+            this.filterTemp = { facilities: [], equipment: [] };
+          },
+          updateType() {
+            this.type = this.typeTemp;
           },
           updateMapMarkers(filteredParks) {
             for (park of this.data) {
