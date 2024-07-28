@@ -62,7 +62,7 @@
               <input
                 type="radio"
                 class="radio"
-                value="animal-park"
+                value="dog-park"
                 x-model="typeTemp"
               />
             </label>
@@ -203,22 +203,22 @@
         </div>
         <button
           class="ml-auto btn btn-outline m-1 btn-sm rounded-md font-bold h-10 border-gray-400"
-          x-show="isListView"
-          x-on:click="isListView = false"
+          x-show="view === 'list'"
+          x-on:click="updateView('map')"
         >
           Map
         </button>
         <button
           class="ml-auto btn btn-outline m-1 btn-sm rounded-md font-bold h-10 border-gray-400"
-          x-show="!isListView"
-          x-on:click="isListView = true"
+          x-show="view === 'map'"
+          x-on:click="updateView('list')"
         >
           List
         </button>
       </div>
       <div class="flex flex-col gap-4 px-2">
         <div x-show="isLoading">Loading ...</div>
-        <div x-show="isListView">
+        <div x-show="view === 'list'">
           <div x-show="filteredParks().length === 0" class="mt-4 text-center">
             <span>No parks found with your filters</span>
             <div class="mt-4 link" x-on:click="clearFilter()">
@@ -231,7 +231,9 @@
             x-show="!isLoading"
           >
             <div class="w-full shrink-0 mb-4">
-              <a x-bind:href="park.url">
+              <a
+                x-bind:href="`${park.url}${window.location.search.toString()}`"
+              >
                 <img
                   class="object-cover rounded-lg w-full h-72 mb-2"
                   x-bind:src="'/assets/images' + park.url + '01.jpg'"
@@ -246,8 +248,8 @@
           </template>
         </div>
       </div>
-      <div x-show="!isListView">
-        <div id="map" class="top-0 left-0 h-screen"></div>
+      <div x-show="view === 'map'">
+        <div id="map" class="top-0 left-0 h-[calc(100%-8rem)]"></div>
       </div>
     </div>
 
@@ -264,7 +266,7 @@
           data: [],
           searchData: {},
           isLoading: false,
-          isListView: true,
+          view: "list",
           type: "playground",
           typeTemp: "playground",
           filter: { facilities: [], equipment: [] },
@@ -288,13 +290,20 @@
           },
           updateFilter() {
             this.filter = { ...this.filterTemp };
+            this.updateUrlParameters();
           },
           clearFilter() {
             this.filter = { facilities: [], equipment: [] };
             this.filterTemp = { facilities: [], equipment: [] };
+            this.updateUrlParameters();
           },
           updateType() {
             this.type = this.typeTemp;
+            this.updateUrlParameters();
+          },
+          updateView(view) {
+            this.view = view;
+            this.updateUrlParameters();
           },
           updateMapMarkers(filteredParks) {
             for (park of this.data) {
@@ -314,11 +323,48 @@
             }
           },
           getSelectedTypeDisplayName() {
+            if (!this.searchData.types) {
+              return "";
+            }
             return this.searchData.types[this.type].text_pt;
+          },
+          updateUrlParameters() {
+            let url = new URL(window.location.href);
+            url.searchParams.set("t", this.type);
+
+            if (this.filter.equipment.length > 0) {
+              url.searchParams.set("e", this.filter.equipment.join(","));
+            }
+
+            if (this.filter.facilities.length > 0) {
+              url.searchParams.set("f", this.filter.facilities.join(","));
+            }
+
+            url.searchParams.set("v", this.view);
+
+            history.replaceState(history.state, "", url.href);
           },
           getData(type) {
             this.type = type;
             this.isLoading = true;
+
+            // get query params
+            const searchParams = new URLSearchParams(window.location.search);
+
+            const t = searchParams.get("t");
+            const e = searchParams.get("e");
+            const f = searchParams.get("f");
+            const v = searchParams.get("v");
+
+            this.type = t || type;
+            this.typeTemp = t || type;
+            this.filter = {
+              facilities: f?.split(",") || [],
+              equipment: e?.split(",") || [],
+            };
+            this.filterTemp = { ...this.filter };
+            this.view = v || "list";
+
             fetch("/parks-all.json")
               .then((response) => response.json())
               .then((data) => {

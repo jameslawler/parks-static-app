@@ -3,6 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/assets/css/tailwind.css" />
     <title>Parks.pt</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
   </head>
   <body>
     <nav class="flex flex-row py-2 mt-2 mb-2">
@@ -11,15 +12,14 @@
 
     <div class="container mx-auto">
       <div class="relative">
-        <a href="/parks">
+        <a x-data x-bind:href="`/parks/${window.location.search.toString()}`">
           <button
             class="btn btn-md btn-circle bg-gray-200/75 absolute z-20 top-4 left-4"
-            href="https://www.google.pt"
           >
             <img src="/assets/images/svg/down-arrow.svg" class="rotate-90" />
           </button>
         </a>
-        <a href="photos">
+        <a x-data x-bind:href="`photos/${window.location.search.toString()}`">
           <div id="images" class="carousel w-full h-72">
             
             <div class="carousel-item w-full">
