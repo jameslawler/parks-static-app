@@ -22,241 +22,242 @@
     </style>
   </head>
   <body>
-    <nav class="flex flex-row py-2 mt-2 mb-2">
+    <div class="flex flex-col min-h-full h-full">
+      <nav class="flex flex-row py-2 mt-2 mb-2">
   <div class="pl-2 flex-grow text-lg font-bold"><a href="/">Parks.pt</a></div>
 </nav>
 
-    <div
-      class="container mx-auto border-gray-100 border-t-2"
-      x-data="parks"
-      x-init="getData('playground')"
-      x-effect="updateMapMarkers(filteredParks())"
-    >
-      <div class="w-full h-16 p-2 flex" x-cloak>
-        <div class="dropdown">
-          <div
-            tabindex="0"
-            role="button"
-            class="btn btn-outline m-1 btn-sm rounded-md font-bold h-10 border-gray-400"
-          >
-            <span x-text="getSelectedTypeDisplayName()"></span>
-            <img src="/assets/images/svg/down-arrow.svg" />
-          </div>
-          <div
-            tabindex="0"
-            class="form-control dropdown-content z-[1200] menu p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            
-            <label class="label cursor-pointer">
-              <span class="label-text">Playgrounds</span>
-              <input
-                type="radio"
-                class="radio"
-                value="playground"
-                x-model="typeTemp"
-              />
-            </label>
-            
-            <label class="label cursor-pointer">
-              <span class="label-text">Dog Parks</span>
-              <input
-                type="radio"
-                class="radio"
-                value="dog-park"
-                x-model="typeTemp"
-              />
-            </label>
-            
-            <label class="label cursor-pointer">
-              <span class="label-text">Exercise Parks</span>
-              <input
-                type="radio"
-                class="radio"
-                value="exercise-park"
-                x-model="typeTemp"
-              />
-            </label>
-            
-            <label class="label cursor-pointer">
-              <span class="label-text">Skate Parks</span>
-              <input
-                type="radio"
-                class="radio"
-                value="skate-park"
-                x-model="typeTemp"
-              />
-            </label>
-            
-            <label class="label cursor-pointer">
-              <span class="label-text">Sport Parks</span>
-              <input
-                type="radio"
-                class="radio"
-                value="sport-park"
-                x-model="typeTemp"
-              />
-            </label>
-            
-            <label class="label cursor-pointer">
-              <span class="label-text">Nature Parks</span>
-              <input
-                type="radio"
-                class="radio"
-                value="nature-park"
-                x-model="typeTemp"
-              />
-            </label>
-            
+      <div
+        class="container mx-auto border-gray-100 border-t-2 flex flex-col grow"
+        x-data="parks"
+        x-init="getData('playground')"
+        x-effect="updateMapMarkers(filteredParks())"
+      >
+        <div class="w-full h-16 p-2 flex" x-cloak>
+          <div class="dropdown">
             <div
-              class="btn btn-sm btn-primary mt-4"
-              x-on:click="updateType(); document.activeElement?.blur()"
+              tabindex="0"
+              role="button"
+              class="btn btn-outline m-1 btn-sm rounded-md font-bold h-10 border-gray-400"
             >
-              Apply
+              <span x-text="getSelectedTypeDisplayName()"></span>
+              <img src="/assets/images/svg/down-arrow.svg" />
             </div>
-          </div>
-        </div>
-        <div class="dropdown">
-          <div
-            tabindex="0"
-            role="button"
-            class="btn btn-outline m-1 btn-sm rounded-md font-bold h-10 border-gray-400"
-          >
-            Filters
-            <img src="/assets/images/svg/down-arrow.svg" />
-          </div>
-          <div
-            tabindex="0"
-            class="form-control dropdown-content left-1/2 -translate-x-1/2 z-[1200] menu p-2 shadow bg-base-100 rounded-box w-72"
-          >
-            <label class="label font-bold">Equipment</label>
-            
-            <label class="label cursor-pointer">
-              <span class="label-text">Swings</span>
-              <input
-                type="checkbox"
-                class="checkbox"
-                value="swing"
-                x-model="filterTemp.equipment"
-              />
-            </label>
-            
-            <label class="label cursor-pointer">
-              <span class="label-text">Slides</span>
-              <input
-                type="checkbox"
-                class="checkbox"
-                value="slide"
-                x-model="filterTemp.equipment"
-              />
-            </label>
-            
-            <label class="label cursor-pointer">
-              <span class="label-text">Play House</span>
-              <input
-                type="checkbox"
-                class="checkbox"
-                value="play-house"
-                x-model="filterTemp.equipment"
-              />
-            </label>
-            
-
-            <label class="label font-bold mt-4">Facilities</label>
-            
-            <label class="label cursor-pointer">
-              <span class="label-text">Water Fountain</span>
-              <input
-                type="checkbox"
-                class="checkbox"
-                value="water-fountain"
-                x-model="filterTemp.facilities"
-              />
-            </label>
-            
-            <label class="label cursor-pointer">
-              <span class="label-text">Sitting</span>
-              <input
-                type="checkbox"
-                class="checkbox"
-                value="seating"
-                x-model="filterTemp.facilities"
-              />
-            </label>
-            
-            <label class="label cursor-pointer">
-              <span class="label-text">Tree shade</span>
-              <input
-                type="checkbox"
-                class="checkbox"
-                value="tree-cover"
-                x-model="filterTemp.facilities"
-              />
-            </label>
-            
             <div
-              class="btn btn-sm btn-primary mt-4"
-              x-on:click="updateFilter(); document.activeElement?.blur()"
+              tabindex="0"
+              class="form-control dropdown-content z-[1200] menu p-2 shadow bg-base-100 rounded-box w-52"
             >
-              Apply
-            </div>
-          </div>
-        </div>
-        <button
-          class="ml-auto btn btn-outline m-1 btn-sm rounded-md font-bold h-10 border-gray-400"
-          x-show="view === 'list'"
-          x-on:click="updateView('map')"
-        >
-          Map
-        </button>
-        <button
-          class="ml-auto btn btn-outline m-1 btn-sm rounded-md font-bold h-10 border-gray-400"
-          x-show="view === 'map'"
-          x-on:click="updateView('list')"
-        >
-          List
-        </button>
-      </div>
-      <div class="flex flex-col gap-4 px-2">
-        <div x-show="isLoading">Loading ...</div>
-        <div x-show="view === 'list'">
-          <div
-            x-show="!isLoading && filteredParks().length === 0"
-            x-cloak
-            class="mt-4 text-center"
-          >
-            <span>No parks found with your filters</span>
-            <div class="mt-4 link" x-on:click="clearFilter()">
-              Clear filters
-            </div>
-          </div>
-          <template
-            x-for="park in filteredParks"
-            x-bind:key="park.name"
-            x-show="!isLoading"
-          >
-            <div class="w-full shrink-0 mb-4">
-              <a
-                x-bind:href="`${park.url}${window.location.search.toString()}`"
-              >
-                <img
-                  class="object-cover rounded-lg w-full h-72 mb-2"
-                  x-bind:src="'/assets/images' + park.url + '01.jpg'"
+              
+              <label class="label cursor-pointer">
+                <span class="label-text">Playgrounds</span>
+                <input
+                  type="radio"
+                  class="radio"
+                  value="playground"
+                  x-model="typeTemp"
                 />
-                <div class="font-bold text-sm" x-text="park.name"></div>
-                <div
-                  class="text-sm"
-                  x-text="`${park.location_street_address}, ${park.location_city}`"
-                ></div>
-              </a>
+              </label>
+              
+              <label class="label cursor-pointer">
+                <span class="label-text">Dog Parks</span>
+                <input
+                  type="radio"
+                  class="radio"
+                  value="dog-park"
+                  x-model="typeTemp"
+                />
+              </label>
+              
+              <label class="label cursor-pointer">
+                <span class="label-text">Exercise Parks</span>
+                <input
+                  type="radio"
+                  class="radio"
+                  value="exercise-park"
+                  x-model="typeTemp"
+                />
+              </label>
+              
+              <label class="label cursor-pointer">
+                <span class="label-text">Skate Parks</span>
+                <input
+                  type="radio"
+                  class="radio"
+                  value="skate-park"
+                  x-model="typeTemp"
+                />
+              </label>
+              
+              <label class="label cursor-pointer">
+                <span class="label-text">Sport Parks</span>
+                <input
+                  type="radio"
+                  class="radio"
+                  value="sport-park"
+                  x-model="typeTemp"
+                />
+              </label>
+              
+              <label class="label cursor-pointer">
+                <span class="label-text">Nature Parks</span>
+                <input
+                  type="radio"
+                  class="radio"
+                  value="nature-park"
+                  x-model="typeTemp"
+                />
+              </label>
+              
+              <div
+                class="btn btn-sm btn-primary mt-4"
+                x-on:click="updateType(); document.activeElement?.blur()"
+              >
+                Apply
+              </div>
             </div>
-          </template>
+          </div>
+          <div class="dropdown">
+            <div
+              tabindex="0"
+              role="button"
+              class="btn btn-outline m-1 btn-sm rounded-md font-bold h-10 border-gray-400"
+            >
+              Filters
+              <img src="/assets/images/svg/down-arrow.svg" />
+            </div>
+            <div
+              tabindex="0"
+              class="form-control dropdown-content left-1/2 -translate-x-1/2 z-[1200] menu p-2 shadow bg-base-100 rounded-box w-72"
+            >
+              <label class="label font-bold">Equipment</label>
+              
+              <label class="label cursor-pointer">
+                <span class="label-text">Swings</span>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  value="swing"
+                  x-model="filterTemp.equipment"
+                />
+              </label>
+              
+              <label class="label cursor-pointer">
+                <span class="label-text">Slides</span>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  value="slide"
+                  x-model="filterTemp.equipment"
+                />
+              </label>
+              
+              <label class="label cursor-pointer">
+                <span class="label-text">Play House</span>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  value="play-house"
+                  x-model="filterTemp.equipment"
+                />
+              </label>
+              
+
+              <label class="label font-bold mt-4">Facilities</label>
+              
+              <label class="label cursor-pointer">
+                <span class="label-text">Water Fountain</span>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  value="water-fountain"
+                  x-model="filterTemp.facilities"
+                />
+              </label>
+              
+              <label class="label cursor-pointer">
+                <span class="label-text">Sitting</span>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  value="seating"
+                  x-model="filterTemp.facilities"
+                />
+              </label>
+              
+              <label class="label cursor-pointer">
+                <span class="label-text">Tree shade</span>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  value="tree-cover"
+                  x-model="filterTemp.facilities"
+                />
+              </label>
+              
+              <div
+                class="btn btn-sm btn-primary mt-4"
+                x-on:click="updateFilter(); document.activeElement?.blur()"
+              >
+                Apply
+              </div>
+            </div>
+          </div>
+          <button
+            class="ml-auto btn btn-outline m-1 btn-sm rounded-md font-bold h-10 border-gray-400"
+            x-show="view === 'list'"
+            x-on:click="updateView('map')"
+          >
+            Map
+          </button>
+          <button
+            class="ml-auto btn btn-outline m-1 btn-sm rounded-md font-bold h-10 border-gray-400"
+            x-show="view === 'map'"
+            x-on:click="updateView('list')"
+          >
+            List
+          </button>
         </div>
-      </div>
-      <div x-show="view === 'map'" class="grow">
-        <div id="map" class="top-0 left-0 h-[calc(100%_-_8rem)]"></div>
+        <div class="flex flex-col gap-4 px-2">
+          <div x-show="isLoading">Loading ...</div>
+          <div x-show="view === 'list'">
+            <div
+              x-show="!isLoading && filteredParks().length === 0"
+              x-cloak
+              class="mt-4 text-center"
+            >
+              <span>No parks found with your filters</span>
+              <div class="mt-4 link" x-on:click="clearFilter()">
+                Clear filters
+              </div>
+            </div>
+            <template
+              x-for="park in filteredParks"
+              x-bind:key="park.name"
+              x-show="!isLoading"
+            >
+              <div class="w-full shrink-0 mb-4">
+                <a
+                  x-bind:href="`${park.url}${window.location.search.toString()}`"
+                >
+                  <img
+                    class="object-cover rounded-lg w-full h-72 mb-2"
+                    x-bind:src="'/assets/images' + park.url + '01.jpg'"
+                  />
+                  <div class="font-bold text-sm" x-text="park.name"></div>
+                  <div
+                    class="text-sm"
+                    x-text="`${park.location_street_address}, ${park.location_city}`"
+                  ></div>
+                </a>
+              </div>
+            </template>
+          </div>
+        </div>
+        <div x-show="view === 'map'" class="grow">
+          <div id="map" class="top-0 left-0 h-full"></div>
+        </div>
       </div>
     </div>
-
     <script>
       const map = L.map("map").setView([41.5551463, -8.41272], 13);
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
