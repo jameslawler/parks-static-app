@@ -237,7 +237,7 @@
             >
               <div class="w-full shrink-0 mb-4">
                 <a
-                  x-bind:href="`${park.url}${window.location.search.toString()}`"
+                  x-bind:href="view && type && filter && `${park.url}${window.location.search.toString()}`"
                 >
                   <img
                     class="object-cover rounded-lg w-full h-72 mb-2"
@@ -375,7 +375,13 @@
               .then((data) => {
                 this.data = data.map((park) => ({
                   ...park,
-                  mapMarker: new L.marker([park.latitude, park.longitude]),
+                  mapMarker: new L.marker([park.latitude, park.longitude]).on(
+                    "click",
+                    () =>
+                      (window.location.href = `${
+                        park.url
+                      }${window.location.search.toString()}`)
+                  ),
                 }));
                 this.isLoading = false;
               });
