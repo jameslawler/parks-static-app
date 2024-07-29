@@ -2469,10 +2469,6 @@ input.tab:checked + .tab-content,
   height: 6rem;
 }
 
-.h-28 {
-  height: 7rem;
-}
-
 .h-3\/5 {
   height: 60%;
 }

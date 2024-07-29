@@ -32,8 +32,9 @@
         x-data="parks"
         x-init="getData('playground')"
         x-effect="updateMapMarkers(filteredParks())"
+        x-cloak
       >
-        <div class="w-full h-16 p-2 flex" x-cloak>
+        <div class="w-full h-16 p-2 flex">
           <div class="dropdown">
             <div
               tabindex="0"
@@ -205,7 +206,7 @@
           <button
             class="ml-auto btn btn-outline m-1 btn-sm rounded-md font-bold h-10 border-gray-400"
             x-show="view === 'list'"
-            x-on:click="updateView('map')"
+            x-on:click="updateView('map'); resizeMap();"
           >
             Map
           </button>
@@ -222,7 +223,6 @@
           <div x-show="view === 'list'">
             <div
               x-show="!isLoading && filteredParks().length === 0"
-              x-cloak
               class="mt-4 text-center"
             >
               <span>No parks found with your filters</span>
@@ -327,6 +327,11 @@
               }
             }
           },
+          resizeMap() {
+            setTimeout(() => {
+              map.invalidateSize();
+            }, 100);
+          },
           getSelectedTypeDisplayName() {
             if (!this.searchData.types) {
               return "";
@@ -392,6 +397,12 @@
               });
           },
         }));
+      });
+
+      document.addEventListener("alpine:initialized", () => {
+        setTimeout(() => {
+          map.invalidateSize();
+        }, 100);
       });
     </script>
   </body>
