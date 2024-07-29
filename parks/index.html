@@ -219,7 +219,11 @@
       <div class="flex flex-col gap-4 px-2">
         <div x-show="isLoading">Loading ...</div>
         <div x-show="view === 'list'">
-          <div x-show="filteredParks().length === 0" class="mt-4 text-center">
+          <div
+            x-show="!isLoading && filteredParks().length === 0"
+            x-cloak
+            class="mt-4 text-center"
+          >
             <span>No parks found with your filters</span>
             <div class="mt-4 link" x-on:click="clearFilter()">
               Clear filters
@@ -249,7 +253,7 @@
         </div>
       </div>
       <div x-show="view === 'map'">
-        <div id="map" class="top-0 left-0 h-[calc(100%-8rem)]"></div>
+        <div id="map" class="top-0 left-0 h-screen"></div>
       </div>
     </div>
 

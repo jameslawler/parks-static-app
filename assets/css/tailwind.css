@@ -2489,12 +2489,12 @@ input.tab:checked + .tab-content,
   height: 18rem;
 }
 
-.h-\[calc\(100\%-8rem\)\] {
-  height: calc(100% - 8rem);
-}
-
 .h-full {
   height: 100%;
+}
+
+.h-screen {
+  height: 100vh;
 }
 
 .min-h-screen {
