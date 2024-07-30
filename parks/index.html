@@ -239,10 +239,7 @@
                 <a
                   x-bind:href="view && type && filter && `${park.url}${window.location.search.toString()}`"
                 >
-                  <img
-                    class="object-cover rounded-lg w-full h-72 mb-2"
-                    x-bind:src="park.url + 'images/01.jpg'"
-                  />
+                  <img x-bind:src="park.url + 'images/01.jpg'" />
                   <div class="font-bold text-sm" x-text="park.name"></div>
                   <div
                     class="text-sm"
