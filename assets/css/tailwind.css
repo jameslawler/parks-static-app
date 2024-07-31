@@ -2609,10 +2609,6 @@ input.tab:checked + .tab-content,
   overflow-x: auto;
 }
 
-.overscroll-none {
-  overscroll-behavior: none;
-}
-
 .whitespace-nowrap {
   white-space: nowrap;
 }
