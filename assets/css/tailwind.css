@@ -2330,6 +2330,10 @@ input.tab:checked + .tab-content,
   margin-left: 0px;
 }
 
+.ml-4 {
+  margin-left: 1rem;
+}
+
 .ml-auto {
   margin-left: auto;
 }
@@ -2719,4 +2723,12 @@ input.tab:checked + .tab-content,
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.first\:pl-4:first-child {
+  padding-left: 1rem;
+}
+
+.last\:pr-4:last-child {
+  padding-right: 1rem;
 }
