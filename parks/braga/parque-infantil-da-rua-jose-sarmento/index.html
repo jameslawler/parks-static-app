@@ -44,7 +44,7 @@
                   srcset="images/01-768-576.avif, images/01-768-576.jpeg"
                 />
                 <img
-                  class="object-fill w-full h-72"
+                  class="object-cover w-full h-72"
                   src="images/01-1344-896.jpeg"
                   alt="Imagen de Braga"
                 />
@@ -62,7 +62,7 @@
                   srcset="images/02-768-576.avif, images/02-768-576.jpeg"
                 />
                 <img
-                  class="object-fill w-full h-72"
+                  class="object-cover w-full h-72"
                   src="images/02-1344-896.jpeg"
                   alt="Imagen de Braga"
                 />
@@ -80,7 +80,7 @@
                   srcset="images/03-768-576.avif, images/03-768-576.jpeg"
                 />
                 <img
-                  class="object-fill w-full h-72"
+                  class="object-cover w-full h-72"
                   src="images/03-1344-896.jpeg"
                   alt="Imagen de Braga"
                 />
@@ -98,7 +98,7 @@
                   srcset="images/04-768-576.avif, images/04-768-576.jpeg"
                 />
                 <img
-                  class="object-fill w-full h-72"
+                  class="object-cover w-full h-72"
                   src="images/04-1344-896.jpeg"
                   alt="Imagen de Braga"
                 />
@@ -116,7 +116,7 @@
                   srcset="images/05-768-576.avif, images/05-768-576.jpeg"
                 />
                 <img
-                  class="object-fill w-full h-72"
+                  class="object-cover w-full h-72"
                   src="images/05-1344-896.jpeg"
                   alt="Imagen de Braga"
                 />
@@ -134,7 +134,7 @@
                   srcset="images/06-768-576.avif, images/06-768-576.jpeg"
                 />
                 <img
-                  class="object-fill w-full h-72"
+                  class="object-cover w-full h-72"
                   src="images/06-1344-896.jpeg"
                   alt="Imagen de Braga"
                 />
@@ -178,10 +178,13 @@
             </div>
           </div>
         </div>
-        <div class="w-full">
-          <p class="line-clamp-4">
-            A small playground situated in between apartment buildings. There is a basic slide and a couple of rocking horses to entertain children.
-          </p>
+        <div x-data="{open:true}" class="w-full">
+          <span x-bind:class="open ? 'line-clamp-4' : ''">A small playground situated in between apartment buildings. There is a basic slide and a couple of rocking horses to entertain children.</span>
+          <span
+            class="link"
+            x-text="open ? 'Show More' : 'Show Less'"
+            x-on:click="open = !open"
+          ></span>
         </div>
         <div class="w-full">
           <div class="flex flex-wrap gap-4">
@@ -207,32 +210,34 @@
               checked
             />
             <div role="tabpanel" class="tab-content mt-4">
-              <div class="carousel w-96 space-x-4">
-                
-                <div class="carousel-item">
-                  <div
-                    class="flex flex-col w-36 h-24 text-sm bg-gray-100 rounded-md items-center justify-center"
-                  >
-                    <img
-                      class="h-10 pb-1"
-                      src="/assets/images/icons/slide.png"
-                    />
-                    <span class="mt-2">Slides</span>
+              <div class="grid">
+                <div class="carousel space-x-4">
+                  
+                  <div class="carousel-item">
+                    <div
+                      class="flex flex-col w-36 h-24 text-sm bg-gray-100 rounded-md items-center justify-center"
+                    >
+                      <img
+                        class="h-10 pb-1"
+                        src="/assets/images/icons/slide.png"
+                      />
+                      <span class="mt-2">Slides</span>
+                    </div>
                   </div>
-                </div>
-                
-                <div class="carousel-item">
-                  <div
-                    class="flex flex-col w-36 h-24 text-sm bg-gray-100 rounded-md items-center justify-center"
-                  >
-                    <img
-                      class="h-10 pb-1"
-                      src="/assets/images/icons/spring-swing-horse.png"
-                    />
-                    <span class="mt-2">Rocking Horse</span>
+                  
+                  <div class="carousel-item">
+                    <div
+                      class="flex flex-col w-36 h-24 text-sm bg-gray-100 rounded-md items-center justify-center"
+                    >
+                      <img
+                        class="h-10 pb-1"
+                        src="/assets/images/icons/spring-swing-horse.png"
+                      />
+                      <span class="mt-2">Rocking Horse</span>
+                    </div>
                   </div>
+                  
                 </div>
-                
               </div>
             </div>
             <input
@@ -243,56 +248,58 @@
               aria-label="Facilities (4)"
             />
             <div role="tabpanel" class="tab-content mt-4">
-              <div class="carousel w-96 space-x-4">
-                
-                <div class="carousel-item">
-                  <div
-                    class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
-                  >
-                    <img
-                      class="h-10 pb-1"
-                      src="/assets/images/icons/bench.png"
-                    />
-                    <span class="font-normal mt-2">Sitting</span>
+              <div class="grid">
+                <div class="carousel space-x-4">
+                  
+                  <div class="carousel-item">
+                    <div
+                      class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                    >
+                      <img
+                        class="h-10 pb-1"
+                        src="/assets/images/icons/bench.png"
+                      />
+                      <span class="font-normal mt-2">Sitting</span>
+                    </div>
                   </div>
-                </div>
-                
-                <div class="carousel-item">
-                  <div
-                    class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
-                  >
-                    <img
-                      class="h-10 pb-1"
-                      src="/assets/images/icons/rubbish-bin.png"
-                    />
-                    <span class="font-normal mt-2">Rubbish Bin</span>
+                  
+                  <div class="carousel-item">
+                    <div
+                      class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                    >
+                      <img
+                        class="h-10 pb-1"
+                        src="/assets/images/icons/rubbish-bin.png"
+                      />
+                      <span class="font-normal mt-2">Rubbish Bin</span>
+                    </div>
                   </div>
-                </div>
-                
-                <div class="carousel-item">
-                  <div
-                    class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
-                  >
-                    <img
-                      class="h-10 pb-1"
-                      src="/assets/images/icons/padded-floor.png"
-                    />
-                    <span class="font-normal mt-2">Padded Floor</span>
+                  
+                  <div class="carousel-item">
+                    <div
+                      class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                    >
+                      <img
+                        class="h-10 pb-1"
+                        src="/assets/images/icons/padded-floor.png"
+                      />
+                      <span class="font-normal mt-2">Padded Floor</span>
+                    </div>
                   </div>
-                </div>
-                
-                <div class="carousel-item">
-                  <div
-                    class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
-                  >
-                    <img
-                      class="h-10 pb-1"
-                      src="/assets/images/icons/24-hours.png"
-                    />
-                    <span class="font-normal mt-2">24h Access</span>
+                  
+                  <div class="carousel-item">
+                    <div
+                      class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                    >
+                      <img
+                        class="h-10 pb-1"
+                        src="/assets/images/icons/24-hours.png"
+                      />
+                      <span class="font-normal mt-2">24h Access</span>
+                    </div>
                   </div>
+                  
                 </div>
-                
               </div>
             </div>
           </div>

@@ -2542,10 +2542,6 @@ input.tab:checked + .tab-content,
   width: 18rem;
 }
 
-.w-96 {
-  width: 24rem;
-}
-
 .w-full {
   width: 100%;
 }
@@ -2681,11 +2677,6 @@ input.tab:checked + .tab-content,
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
-}
-
-.object-fill {
-  -o-object-fit: fill;
-     object-fit: fill;
 }
 
 .p-2 {
