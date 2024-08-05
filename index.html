@@ -11,10 +11,10 @@
 
     <div class="container mx-auto min-h-screen">
       <div
-        class="hero h-3/5"
+        class="hero h-3/5 lg:h-4/5"
         style="background-image: url(/assets/images/hero.webp);"
       >
-        <div class="hero-content text-neutral-content">
+        <div class="hero-content text-neutral-content lg:justify-end">
           <div class="w-4/5 bg-gray-600/80 rounded-md p-6">
             <h1 class="mb-5 text-5xl font-bold">Your city.</h1>
             <h1 class="mb-5 text-5xl font-bold">Your parks.</h1>
@@ -31,7 +31,7 @@
         </div>
         <div class="carousel w-full gap-4">
           
-          <div class="carousel-item w-4/5 first:pl-4 last:pr-4">
+          <div class="carousel-item w-4/5 lg:w-[300px] first:pl-4 last:pr-4">
             <a class="w-full" href="/parks/braga/parque-infantil-do-bocage/">
               <picture class="w-full h-56">
                 <source
@@ -56,7 +56,7 @@
             </a>
           </div>
           
-          <div class="carousel-item w-4/5 first:pl-4 last:pr-4">
+          <div class="carousel-item w-4/5 lg:w-[300px] first:pl-4 last:pr-4">
             <a class="w-full" href="/parks/braga/parque-infantil-do-bom-jesus/">
               <picture class="w-full h-56">
                 <source
@@ -84,63 +84,65 @@
         </div>
       </div>
       <div class="mt-5 p-4">
-        <div class="pb-4 text-2xl">Parks that fit your needs</div>
-        <div class="grid grid-cols-2 gap-4">
-          
-          <a href="parks/?t=playground">
-            <div class="flex flex-col gap-4 rounded-md bg-gray-100">
-              <img src="/assets/images/icons/home/playground.png" class="w-2/5 mt-4 self-center" />
-              <span class="text-black text-sm font-bold pl-2 mb-4 self-center"
-                >Playground
-              </span>
-            </div>
-          </a>
-          
-          <a href="parks/?t=dog-park">
-            <div class="flex flex-col gap-4 rounded-md bg-gray-100">
-              <img src="/assets/images/icons/home/dog-park.png" class="w-2/5 mt-4 self-center" />
-              <span class="text-black text-sm font-bold pl-2 mb-4 self-center"
-                >Dog Park
-              </span>
-            </div>
-          </a>
-          
-          <a href="parks/?t=exercise-park">
-            <div class="flex flex-col gap-4 rounded-md bg-gray-100">
-              <img src="/assets/images/icons/home/exercise-park.png" class="w-2/5 mt-4 self-center" />
-              <span class="text-black text-sm font-bold pl-2 mb-4 self-center"
-                >Exercise Park
-              </span>
-            </div>
-          </a>
-          
-          <a href="parks/?t=skate-park">
-            <div class="flex flex-col gap-4 rounded-md bg-gray-100">
-              <img src="/assets/images/icons/home/skate-park.png" class="w-2/5 mt-4 self-center" />
-              <span class="text-black text-sm font-bold pl-2 mb-4 self-center"
-                >Skate Park
-              </span>
-            </div>
-          </a>
-          
-          <a href="parks/?t=sport-park">
-            <div class="flex flex-col gap-4 rounded-md bg-gray-100">
-              <img src="/assets/images/icons/home/sport-park.png" class="w-2/5 mt-4 self-center" />
-              <span class="text-black text-sm font-bold pl-2 mb-4 self-center"
-                >Sport Park
-              </span>
-            </div>
-          </a>
-          
-          <a href="parks/?t=nature-park">
-            <div class="flex flex-col gap-4 rounded-md bg-gray-100">
-              <img src="/assets/images/icons/home/nature-park.png" class="w-2/5 mt-4 self-center" />
-              <span class="text-black text-sm font-bold pl-2 mb-4 self-center"
-                >Nature Park
-              </span>
-            </div>
-          </a>
-          
+        <div class="flex flex-col lg:flex-row">
+          <div class="pb-4 lg:w-1/2"><div class="text-2xl">Parks that fit your needs</div><div class="hidden lg:block">...</div></div>
+          <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:w-1/2">
+            
+            <a href="parks/?t=playground">
+              <div class="flex flex-col gap-4 rounded-md bg-gray-100">
+                <img src="/assets/images/icons/home/playground.png" class="w-2/5 mt-4 self-center" />
+                <span class="text-black text-sm font-bold pl-2 mb-4 self-center"
+                  >Playground
+                </span>
+              </div>
+            </a>
+            
+            <a href="parks/?t=dog-park">
+              <div class="flex flex-col gap-4 rounded-md bg-gray-100">
+                <img src="/assets/images/icons/home/dog-park.png" class="w-2/5 mt-4 self-center" />
+                <span class="text-black text-sm font-bold pl-2 mb-4 self-center"
+                  >Dog Park
+                </span>
+              </div>
+            </a>
+            
+            <a href="parks/?t=exercise-park">
+              <div class="flex flex-col gap-4 rounded-md bg-gray-100">
+                <img src="/assets/images/icons/home/exercise-park.png" class="w-2/5 mt-4 self-center" />
+                <span class="text-black text-sm font-bold pl-2 mb-4 self-center"
+                  >Exercise Park
+                </span>
+              </div>
+            </a>
+            
+            <a href="parks/?t=skate-park">
+              <div class="flex flex-col gap-4 rounded-md bg-gray-100">
+                <img src="/assets/images/icons/home/skate-park.png" class="w-2/5 mt-4 self-center" />
+                <span class="text-black text-sm font-bold pl-2 mb-4 self-center"
+                  >Skate Park
+                </span>
+              </div>
+            </a>
+            
+            <a href="parks/?t=sport-park">
+              <div class="flex flex-col gap-4 rounded-md bg-gray-100">
+                <img src="/assets/images/icons/home/sport-park.png" class="w-2/5 mt-4 self-center" />
+                <span class="text-black text-sm font-bold pl-2 mb-4 self-center"
+                  >Sport Park
+                </span>
+              </div>
+            </a>
+            
+            <a href="parks/?t=nature-park">
+              <div class="flex flex-col gap-4 rounded-md bg-gray-100">
+                <img src="/assets/images/icons/home/nature-park.png" class="w-2/5 mt-4 self-center" />
+                <span class="text-black text-sm font-bold pl-2 mb-4 self-center"
+                  >Nature Park
+                </span>
+              </div>
+            </a>
+            
+          </div>
         </div>
       </div>
       <div class="mt-5 p-4">

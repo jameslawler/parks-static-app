@@ -349,8 +349,8 @@
       </div>
       <div class="flex flex-col p-4 gap-6">
         <div class="w-full">
-          <h3 class="text-lg font-bold">Parque Infantil do Bocage</h3>
-          <h4 class="text-base">
+          <h3 class="text-md font-bold">Parque Infantil do Bocage</h3>
+          <h4 class="text-sm">
             <span>Praça do Bocage, Braga</span>
           </h4>
         </div>
@@ -379,7 +379,7 @@
         <div x-data="{open:true}" class="w-full">
           <span x-bind:class="open ? 'line-clamp-4' : ''">A large playground surrounded by trees, apartments, and shops. This playground is a combination park for children and fitness for adults. There is a wide variety of equipment for children to play on.</span>
           <span
-            class="link"
+            class="link lg:hidden"
             x-text="open ? 'Show More' : 'Show Less'"
             x-on:click="open = !open"
           ></span>

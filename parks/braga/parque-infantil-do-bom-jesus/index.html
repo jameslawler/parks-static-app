@@ -169,8 +169,8 @@
       </div>
       <div class="flex flex-col p-4 gap-6">
         <div class="w-full">
-          <h3 class="text-lg font-bold">Parque Infantil do Bom Jesus</h3>
-          <h4 class="text-base">
+          <h3 class="text-md font-bold">Parque Infantil do Bom Jesus</h3>
+          <h4 class="text-sm">
             <span>Parque Bom Jesus, estrada de Bom Jesus, Braga</span>
           </h4>
         </div>
@@ -199,7 +199,7 @@
         <div x-data="{open:true}" class="w-full">
           <span x-bind:class="open ? 'line-clamp-4' : ''">A large playground in the park of Bom Jesus. It is surrounded by parklands, and has a beautiful lake nearby. The playground is modern and has a large set of equipment to play.</span>
           <span
-            class="link"
+            class="link lg:hidden"
             x-text="open ? 'Show More' : 'Show Less'"
             x-on:click="open = !open"
           ></span>

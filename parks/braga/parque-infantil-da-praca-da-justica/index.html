@@ -187,8 +187,8 @@
       </div>
       <div class="flex flex-col p-4 gap-6">
         <div class="w-full">
-          <h3 class="text-lg font-bold">Parque Infantil da Praça da Justiça</h3>
-          <h4 class="text-base">
+          <h3 class="text-md font-bold">Parque Infantil da Praça da Justiça</h3>
+          <h4 class="text-sm">
             <span>Praça da Justiça 155, Braga</span>
           </h4>
         </div>
@@ -217,7 +217,7 @@
         <div x-data="{open:true}" class="w-full">
           <span x-bind:class="open ? 'line-clamp-4' : ''">A small playground situated in front of the Braga court house. The square is surrounded by open areas, grass, palm trees, and a couple of water features. As the playground is small, it is only suitable for a small number of children at the same time.</span>
           <span
-            class="link"
+            class="link lg:hidden"
             x-text="open ? 'Show More' : 'Show Less'"
             x-on:click="open = !open"
           ></span>
