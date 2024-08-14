@@ -5,33 +5,54 @@
     <title>Parks.pt</title>
   </head>
   <body>
-    <nav class="flex flex-row py-2 mt-2 mb-2">
-  <div class="pl-4 flex-grow text-lg font-bold"><a href="/">Parks.pt</a></div>
-</nav>
-
-    <div class="container mx-auto min-h-screen">
-      <div
-        class="hero h-3/5 lg:h-4/5"
-        style="background-image: url(/assets/images/hero.webp);"
-      >
-        <div class="hero-content text-neutral-content lg:justify-end">
-          <div class="w-4/5 bg-gray-600/80 rounded-md p-6">
-            <h1 class="mb-5 text-5xl font-bold">Your city.</h1>
-            <h1 class="mb-5 text-5xl font-bold">Your parks.</h1>
-            <p class="mt-10 mb-5 text-xl font-bold">
-              Discover new parks to relax and enjoy.
-            </p>
-            <a href="parks" class="btn btn-primary">Parks near you</a>
-          </div>
+    <div
+      class="hero h-3/5 md:h-4/5"
+      style="background-image: url(/assets/images/hero.webp);"
+    >
+      <div class="hero-content text-neutral-content md:justify-end">
+        <div class="w-4/5 bg-gray-600/80 rounded-md p-6">
+          <h1 class="mb-5 text-5xl font-bold">Your city.</h1>
+          <h1 class="mb-5 text-5xl font-bold">Your parks.</h1>
+          <p class="mt-10 mb-5 text-xl font-bold">
+            Discover new parks to relax and enjoy.
+          </p>
+          <a href="parks" class="btn btn-primary">Parks near you</a>
         </div>
       </div>
+    </div>
+    <div class="container mx-auto">
       <div class="mt-5 pb-5">
         <div class="pb-4 ml-4 text-2xl">
           Top parks in <span class="font-semibold">Braga</span>
         </div>
         <div class="carousel w-full gap-4">
           
-          <div class="carousel-item w-4/5 lg:w-[300px] first:pl-4 last:pr-4">
+          <div class="carousel-item w-4/5 md:w-[300px] first:pl-4 last:pr-4">
+            <a class="w-full" href="/parks/braga/parque-infantil-da-praca-da-justica/">
+              <picture class="w-full h-56">
+                <source
+                  media="(max-width: 767px)"
+                  srcset="/parks/braga/parque-infantil-da-praca-da-justica/images/01-384-288.avif, /parks/braga/parque-infantil-da-praca-da-justica/images/01-384-288.jpeg"
+                />
+                <source
+                  media="(min-width:768px)"
+                  srcset="/parks/braga/parque-infantil-da-praca-da-justica/images/01-768-576.avif, /parks/braga/parque-infantil-da-praca-da-justica/images/01-768-576.jpeg"
+                />
+                <img
+                  class="rounded-box object-cover w-full"
+                  src="/parks/braga/parque-infantil-da-praca-da-justica/images/01-1344-896.jpeg"
+                  alt=""
+                />
+              </picture>
+              <div class="font-bold text-md mt-2">Parque Infantil da Praça da Justiça</div>
+              <div class="text-sm">
+                Praça da Justiça 155,
+                Braga
+              </div>
+            </a>
+          </div>
+          
+          <div class="carousel-item w-4/5 md:w-[300px] first:pl-4 last:pr-4">
             <a class="w-full" href="/parks/braga/parque-infantil-do-bocage/">
               <picture class="w-full h-56">
                 <source
@@ -56,7 +77,7 @@
             </a>
           </div>
           
-          <div class="carousel-item w-4/5 lg:w-[300px] first:pl-4 last:pr-4">
+          <div class="carousel-item w-4/5 md:w-[300px] first:pl-4 last:pr-4">
             <a class="w-full" href="/parks/braga/parque-infantil-do-bom-jesus/">
               <picture class="w-full h-56">
                 <source
@@ -83,75 +104,119 @@
           
         </div>
       </div>
-      <div class="mt-5 p-4">
-        <div class="flex flex-col lg:flex-row">
-          <div class="pb-4 lg:w-1/2"><div class="text-2xl">Parks that fit your needs</div><div class="hidden lg:block">...</div></div>
-          <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:w-1/2">
-            
-            <a href="parks/?t=playground">
-              <div class="flex flex-col gap-4 rounded-md bg-gray-100">
-                <img src="/assets/images/icons/home/playground.png" class="w-2/5 mt-4 self-center" />
-                <span class="text-black text-sm font-bold pl-2 mb-4 self-center"
-                  >Playground
-                </span>
-              </div>
-            </a>
-            
-            <a href="parks/?t=dog-park">
-              <div class="flex flex-col gap-4 rounded-md bg-gray-100">
-                <img src="/assets/images/icons/home/dog-park.png" class="w-2/5 mt-4 self-center" />
-                <span class="text-black text-sm font-bold pl-2 mb-4 self-center"
-                  >Dog Park
-                </span>
-              </div>
-            </a>
-            
-            <a href="parks/?t=exercise-park">
-              <div class="flex flex-col gap-4 rounded-md bg-gray-100">
-                <img src="/assets/images/icons/home/exercise-park.png" class="w-2/5 mt-4 self-center" />
-                <span class="text-black text-sm font-bold pl-2 mb-4 self-center"
-                  >Exercise Park
-                </span>
-              </div>
-            </a>
-            
-            <a href="parks/?t=skate-park">
-              <div class="flex flex-col gap-4 rounded-md bg-gray-100">
-                <img src="/assets/images/icons/home/skate-park.png" class="w-2/5 mt-4 self-center" />
-                <span class="text-black text-sm font-bold pl-2 mb-4 self-center"
-                  >Skate Park
-                </span>
-              </div>
-            </a>
-            
-            <a href="parks/?t=sport-park">
-              <div class="flex flex-col gap-4 rounded-md bg-gray-100">
-                <img src="/assets/images/icons/home/sport-park.png" class="w-2/5 mt-4 self-center" />
-                <span class="text-black text-sm font-bold pl-2 mb-4 self-center"
-                  >Sport Park
-                </span>
-              </div>
-            </a>
-            
-            <a href="parks/?t=nature-park">
-              <div class="flex flex-col gap-4 rounded-md bg-gray-100">
-                <img src="/assets/images/icons/home/nature-park.png" class="w-2/5 mt-4 self-center" />
-                <span class="text-black text-sm font-bold pl-2 mb-4 self-center"
-                  >Nature Park
-                </span>
-              </div>
-            </a>
-            
+    </div>
+    <div class="bg-orange-50">
+      <div class="container mx-auto">
+        <div class="mt-5 p-4">
+          <div class="flex flex-col md:flex-row">
+            <div class="pb-4 md:w-1/2">
+              <div class="text-2xl">Parks that fit your needs</div>
+              <div class="hidden md:block"></div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:w-1/2">
+              
+              <a href="parks/?t=playground">
+                <div class="flex flex-col gap-4 rounded-box bg-white">
+                  <img src="/assets/images/icons/home/playground.png" class="w-2/5 mt-4 self-center" />
+                  <span
+                    class="text-black text-sm font-bold pl-2 mb-4 self-center"
+                    >Playground
+                  </span>
+                </div>
+              </a>
+              
+              <a href="parks/?t=dog-park">
+                <div class="flex flex-col gap-4 rounded-box bg-white">
+                  <img src="/assets/images/icons/home/dog-park.png" class="w-2/5 mt-4 self-center" />
+                  <span
+                    class="text-black text-sm font-bold pl-2 mb-4 self-center"
+                    >Dog Park
+                  </span>
+                </div>
+              </a>
+              
+              <a href="parks/?t=exercise-park">
+                <div class="flex flex-col gap-4 rounded-box bg-white">
+                  <img src="/assets/images/icons/home/exercise-park.png" class="w-2/5 mt-4 self-center" />
+                  <span
+                    class="text-black text-sm font-bold pl-2 mb-4 self-center"
+                    >Exercise Park
+                  </span>
+                </div>
+              </a>
+              
+              <a href="parks/?t=skate-park">
+                <div class="flex flex-col gap-4 rounded-box bg-white">
+                  <img src="/assets/images/icons/home/skate-park.png" class="w-2/5 mt-4 self-center" />
+                  <span
+                    class="text-black text-sm font-bold pl-2 mb-4 self-center"
+                    >Skate Park
+                  </span>
+                </div>
+              </a>
+              
+              <a href="parks/?t=sport-park">
+                <div class="flex flex-col gap-4 rounded-box bg-white">
+                  <img src="/assets/images/icons/home/sport-park.png" class="w-2/5 mt-4 self-center" />
+                  <span
+                    class="text-black text-sm font-bold pl-2 mb-4 self-center"
+                    >Sport Park
+                  </span>
+                </div>
+              </a>
+              
+              <a href="parks/?t=nature-park">
+                <div class="flex flex-col gap-4 rounded-box bg-white">
+                  <img src="/assets/images/icons/home/nature-park.png" class="w-2/5 mt-4 self-center" />
+                  <span
+                    class="text-black text-sm font-bold pl-2 mb-4 self-center"
+                    >Nature Park
+                  </span>
+                </div>
+              </a>
+              
+            </div>
           </div>
         </div>
       </div>
-      <div class="mt-5 p-4">
-        <div class="pb-4 text-2xl">Parks coverage</div>
-        <div class="pb-10 text-2xl"><div class="font-bold">1</div><div>Cities</div></div>
-        <div class="pb-10 text-2xl"><div class="font-bold">4</div><div>Playgrounds</div></div>
+    </div>
+    <div class="container mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-5 p-4">
+        <div>
+          <div class="font-bold text-2xl">1</div>
+          <div class="text-xl">City</div>
+        </div>
+        <div>
+          <div class="font-bold text-2xl">34</div>
+          <div class="text-xl">Playgrounds</div>
+        </div>
+        <div>
+          <div class="font-bold text-2xl">07</div>
+          <div class="text-xl">Dog Parks</div>
+        </div>
+        <div>
+          <div class="font-bold text-2xl">24</div>
+          <div class="text-xl">Exercise Parks</div>
+        </div>
+        <div>
+          <div class="font-bold text-2xl">12</div>
+          <div class="text-xl">Skate Parks</div>
+        </div>
+        <div>
+          <div class="font-bold text-2xl">19</div>
+          <div class="text-xl">Sport Parks</div>
+        </div>
+        <div>
+          <div class="font-bold text-2xl">28</div>
+          <div class="text-xl">Nature Parks</div>
         </div>
       </div>
-      <div class="w-full h-1/2"></div>
+    </div>
+    <div class="bg-orange-50">
+      <div class="container mx-auto flex flex-col mt-5 p-4">
+        <div class="mt-10 text-center">Made in Braga</div>
+        <div class="text-center">Collecting parks since 2024</div>
+      </div>
     </div>
   </body>
 </html>

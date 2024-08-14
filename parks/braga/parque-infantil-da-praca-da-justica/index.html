@@ -1,36 +1,35 @@
 <html>
   <head>
+    <title>Parks.pt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/assets/css/tailwind.css" />
-    <title>Parks.pt</title>
-    <script src="//unpkg.com/alpinejs" defer></script>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
-    />
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-    ></script>
+    <script src="/assets/js/alpine.min.js" defer></script>
+    <link rel="stylesheet" href="/assets/css/leaflet.css" />
+    <script src="/assets/js/leaflet.min.js"></script>
   </head>
   <body>
-    <nav class="flex flex-row py-2 mt-2 mb-2">
-  <div class="pl-4 flex-grow text-lg font-bold"><a href="/">Parks.pt</a></div>
+    <nav class="container flex flex-row mt-2 mb-2">
+  <div class="flex-grow text-lg font-bold"><a href="/">Parks.pt</a></div>
 </nav>
 
-    <div class="container mx-auto">
+    <div class="container mx-auto border-gray-100 border-t-2">
       <div class="relative">
-        <a x-data x-bind:href="`/parks/${window.location.search.toString()}`">
+        <a
+          class="md:hidden"
+          x-data
+          x-bind:href="`/parks/${window.location.search.toString()}`"
+        >
           <button
             class="btn btn-md btn-circle bg-gray-200/75 absolute z-20 top-4 left-4"
           >
             <img src="/assets/images/svg/down-arrow.svg" class="rotate-90" />
           </button>
         </a>
-        <a x-data x-bind:href="`photos/${window.location.search.toString()}`">
+        <a
+          class="md:hidden"
+          x-data
+          x-bind:href="`photos/${window.location.search.toString()}`"
+        >
           <div id="images" class="carousel w-full">
             
             <div class="carousel-item w-full">
@@ -179,51 +178,123 @@
             
           </div>
           <div
-            class="absolute z-20 bottom-4 right-4 text-white font-bold bg-gray-700/75 rounded-md pl-2 pr-2 pt-1 pb-1"
+            class="md:hidden absolute z-20 bottom-4 right-4 text-white font-bold bg-gray-700/75 rounded-md pl-2 pr-2 pt-1 pb-1"
           >
             <span id="image-count">1</span> of 8
           </div>
         </a>
       </div>
-      <div class="flex flex-col p-4 gap-6">
-        <div class="w-full">
-          <h3 class="text-md font-bold">Parque Infantil da Praça da Justiça</h3>
-          <h4 class="text-sm">
-            <span>Praça da Justiça 155, Braga</span>
-          </h4>
-        </div>
-        <div class="w-full">
-          <div class="flex">
-            <div class="w-1/3">
-              <div class="text-sm">Size</div>
-              <div class="text-sm font-bold">
-                Small
-              </div>
-            </div>
-            <div class="w-1/3">
-              <div class="text-sm">Surface</div>
-              <div class="text-sm font-bold">
-                Padded Rubber
-              </div>
-            </div>
-            <div class="w-1/3">
-              <div class="text-sm">Modern</div>
-              <div class="text-sm font-bold">
-                No
-              </div>
-            </div>
+      <div class="flex flex-col p-4 md:px-0 gap-6">
+        <div class="w-full flex md:flex-col">
+          <div class="w-full md:w-2/3">
+            <h3 class="text-md md:text-xl font-bold">Parque Infantil da Praça da Justiça</h3>
+            <h4 class="text-sm">
+              <span>Praça da Justiça 155, Braga</span>
+            </h4>
           </div>
-        </div>
-        <div x-data="{open:true}" class="w-full">
-          <span x-bind:class="open ? 'line-clamp-4' : ''">A small playground situated in front of the Braga court house. The square is surrounded by open areas, grass, palm trees, and a couple of water features. As the playground is small, it is only suitable for a small number of children at the same time.</span>
-          <span
-            class="link lg:hidden"
-            x-text="open ? 'Show More' : 'Show Less'"
-            x-on:click="open = !open"
-          ></span>
-        </div>
-        <div class="w-full">
-          <div class="flex flex-wrap gap-4">
+          <div class="hidden md:flex flex-row gap-4 mt-6">
+            <div class="grid grid-cols-4 auto-rows-fr gap-2 w-4/6">
+                <div  class="col-span-3 row-span-3"  >
+              <a
+                href="images/01-1344-896.jpeg"
+              >
+                <picture class="w-full">
+                  <source
+                    media="(max-width: 767px)"
+                    srcset="images/01-384-288.avif, images/01-384-288.jpeg"
+                  />
+                  <source
+                    media="(min-width:768px)"
+                    srcset="images/01-768-576.avif, images/01-768-576.jpeg"
+                  />
+                  <img
+                    class="object-cover w-full h-72 md:h-full rounded-md"
+                    src="images/01-1344-896.jpeg"
+                    alt="Imagen de Braga"
+                  />
+                </picture>
+              </a>
+              
+            </div>
+               <div  >
+              <a
+                href="images/02-1344-896.jpeg"
+              >
+                <picture class="w-full">
+                  <source
+                    media="(max-width: 767px)"
+                    srcset="images/02-384-288.avif, images/02-384-288.jpeg"
+                  />
+                  <source
+                    media="(min-width:768px)"
+                    srcset="images/02-768-576.avif, images/02-768-576.jpeg"
+                  />
+                  <img
+                    class="object-cover w-full h-72 md:h-full rounded-md"
+                    src="images/02-1344-896.jpeg"
+                    alt="Imagen de Braga"
+                  />
+                </picture>
+              </a>
+              
+            </div>
+               <div  >
+              <a
+                href="images/03-1344-896.jpeg"
+              >
+                <picture class="w-full">
+                  <source
+                    media="(max-width: 767px)"
+                    srcset="images/03-384-288.avif, images/03-384-288.jpeg"
+                  />
+                  <source
+                    media="(min-width:768px)"
+                    srcset="images/03-768-576.avif, images/03-768-576.jpeg"
+                  />
+                  <img
+                    class="object-cover w-full h-72 md:h-full rounded-md"
+                    src="images/03-1344-896.jpeg"
+                    alt="Imagen de Braga"
+                  />
+                </picture>
+              </a>
+              
+            </div>
+               <div   class="relative text-center" >
+              <a
+                href="images/04-1344-896.jpeg"
+              >
+                <picture class="w-full">
+                  <source
+                    media="(max-width: 767px)"
+                    srcset="images/04-384-288.avif, images/04-384-288.jpeg"
+                  />
+                  <source
+                    media="(min-width:768px)"
+                    srcset="images/04-768-576.avif, images/04-768-576.jpeg"
+                  />
+                  <img
+                    class="object-cover w-full h-72 md:h-full rounded-md"
+                    src="images/04-1344-896.jpeg"
+                    alt="Imagen de Braga"
+                  />
+                </picture>
+              </a>
+              
+              <a
+                x-data
+                x-bind:href="`photos/${window.location.search.toString()}`"
+                ><div
+                  class="absolute flex flex-col justify-center w-full h-full top-0 left-0 text-white bg-gray-500/60 rounded-md"
+                >
+                  See all photos (8)
+                </div></a
+              >
+              
+            </div>
+                     
+          </div>
+          <div class="flex flex-col gap-4">
             
             <div class="badge badge-lg bg-gray-100">
               Great Location
@@ -239,148 +310,191 @@
             
           </div>
         </div>
-        <div class="w-full">
-          <div role="tablist" class="tabs tabs-bordered">
-            <input
-              type="radio"
-              name="my_tabs_1"
-              role="tab"
-              class="tab pb-8 text-base whitespace-nowrap"
-              aria-label="Equipment (3)"
-              checked
-            />
-            <div role="tabpanel" class="tab-content mt-4">
-              <div class="grid">
-                <div class="carousel space-x-4">
-                  
-                  <div class="carousel-item">
-                    <div
-                      class="flex flex-col w-36 h-24 text-sm bg-gray-100 rounded-md items-center justify-center"
-                    >
-                      <img
-                        class="h-10 pb-1"
-                        src="/assets/images/icons/slide.png"
-                      />
-                      <span class="mt-2">Slides</span>
-                    </div>
+      </div>
+      <div class="w-full md:w-4/6">
+        <div class="flex">
+          <div class="w-1/3">
+            <div class="text-sm">Size</div>
+            <div class="text-sm font-bold">
+              Small
+            </div>
+          </div>
+          <div class="w-1/3">
+            <div class="text-sm">Surface</div>
+            <div class="text-sm font-bold">
+              Padded Rubber
+            </div>
+          </div>
+          <div class="w-1/3">
+            <div class="text-sm">Modern</div>
+            <div class="text-sm font-bold">
+              No
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full">
+        <span>A small playground situated in front of the Braga court house. The square is surrounded by open areas, grass, palm trees, and a couple of water features. As the playground is small, it is only suitable for a small number of children at the same time.</span>
+      </div>
+      <div class="md:hidden w-full">
+        <div class="flex flex-wrap gap-4">
+          
+          <div class="badge badge-lg bg-gray-100">
+            Great Location
+          </div>
+          
+          <div class="badge badge-lg bg-gray-100">
+            Easy to Access
+          </div>
+          
+          <div class="badge badge-lg bg-gray-100">
+            24h Access
+          </div>
+          
+        </div>
+      </div>
+      <div class="w-full">
+        <div role="tablist" class="tabs tabs-bordered">
+          <input
+            type="radio"
+            name="my_tabs_1"
+            role="tab"
+            class="tab pb-8 text-base whitespace-nowrap"
+            aria-label="Equipment (3)"
+            checked
+          />
+          <div role="tabpanel" class="tab-content mt-4">
+            <div class="grid">
+              <div class="carousel space-x-4">
+                
+                <div class="carousel-item">
+                  <div
+                    class="flex flex-col w-36 h-24 text-sm bg-gray-100 rounded-md items-center justify-center"
+                  >
+                    <img
+                      class="h-10 pb-1"
+                      src="/assets/images/icons/slide.png"
+                    />
+                    <span class="mt-2">Slides</span>
                   </div>
-                  
-                  <div class="carousel-item">
-                    <div
-                      class="flex flex-col w-36 h-24 text-sm bg-gray-100 rounded-md items-center justify-center"
-                    >
-                      <img
-                        class="h-10 pb-1"
-                        src="/assets/images/icons/seesaw.png"
-                      />
-                      <span class="mt-2">Seesaw</span>
-                    </div>
-                  </div>
-                  
-                  <div class="carousel-item">
-                    <div
-                      class="flex flex-col w-36 h-24 text-sm bg-gray-100 rounded-md items-center justify-center"
-                    >
-                      <img
-                        class="h-10 pb-1"
-                        src="/assets/images/icons/spring-swing-horse.png"
-                      />
-                      <span class="mt-2">Rocking Horse</span>
-                    </div>
-                  </div>
-                  
                 </div>
+                
+                <div class="carousel-item">
+                  <div
+                    class="flex flex-col w-36 h-24 text-sm bg-gray-100 rounded-md items-center justify-center"
+                  >
+                    <img
+                      class="h-10 pb-1"
+                      src="/assets/images/icons/seesaw.png"
+                    />
+                    <span class="mt-2">Seesaw</span>
+                  </div>
+                </div>
+                
+                <div class="carousel-item">
+                  <div
+                    class="flex flex-col w-36 h-24 text-sm bg-gray-100 rounded-md items-center justify-center"
+                  >
+                    <img
+                      class="h-10 pb-1"
+                      src="/assets/images/icons/spring-swing-horse.png"
+                    />
+                    <span class="mt-2">Rocking Horse</span>
+                  </div>
+                </div>
+                
               </div>
             </div>
-            <input
-              type="radio"
-              name="my_tabs_1"
-              role="tab"
-              class="tab pb-8 text-base whitespace-nowrap"
-              aria-label="Facilities (6)"
-            />
-            <div role="tabpanel" class="tab-content mt-4">
-              <div class="grid">
-                <div class="carousel space-x-4">
-                  
-                  <div class="carousel-item">
-                    <div
-                      class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
-                    >
-                      <img
-                        class="h-10 pb-1"
-                        src="/assets/images/icons/fence.png"
-                      />
-                      <span class="font-normal mt-2">Fenced</span>
-                    </div>
+          </div>
+          <input
+            type="radio"
+            name="my_tabs_1"
+            role="tab"
+            class="tab pb-8 text-base whitespace-nowrap"
+            aria-label="Facilities (6)"
+          />
+          <div role="tabpanel" class="tab-content mt-4">
+            <div class="grid">
+              <div class="carousel space-x-4">
+                
+                <div class="carousel-item">
+                  <div
+                    class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                  >
+                    <img
+                      class="h-10 pb-1"
+                      src="/assets/images/icons/fence.png"
+                    />
+                    <span class="font-normal mt-2">Fenced</span>
                   </div>
-                  
-                  <div class="carousel-item">
-                    <div
-                      class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
-                    >
-                      <img
-                        class="h-10 pb-1"
-                        src="/assets/images/icons/water-fountain.png"
-                      />
-                      <span class="font-normal mt-2">Water Fountain</span>
-                    </div>
-                  </div>
-                  
-                  <div class="carousel-item">
-                    <div
-                      class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
-                    >
-                      <img
-                        class="h-10 pb-1"
-                        src="/assets/images/icons/bench.png"
-                      />
-                      <span class="font-normal mt-2">Sitting</span>
-                    </div>
-                  </div>
-                  
-                  <div class="carousel-item">
-                    <div
-                      class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
-                    >
-                      <img
-                        class="h-10 pb-1"
-                        src="/assets/images/icons/rubbish-bin.png"
-                      />
-                      <span class="font-normal mt-2">Rubbish Bin</span>
-                    </div>
-                  </div>
-                  
-                  <div class="carousel-item">
-                    <div
-                      class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
-                    >
-                      <img
-                        class="h-10 pb-1"
-                        src="/assets/images/icons/padded-floor.png"
-                      />
-                      <span class="font-normal mt-2">Padded Floor</span>
-                    </div>
-                  </div>
-                  
-                  <div class="carousel-item">
-                    <div
-                      class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
-                    >
-                      <img
-                        class="h-10 pb-1"
-                        src="/assets/images/icons/24-hours.png"
-                      />
-                      <span class="font-normal mt-2">24h Access</span>
-                    </div>
-                  </div>
-                  
                 </div>
+                
+                <div class="carousel-item">
+                  <div
+                    class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                  >
+                    <img
+                      class="h-10 pb-1"
+                      src="/assets/images/icons/water-fountain.png"
+                    />
+                    <span class="font-normal mt-2">Water Fountain</span>
+                  </div>
+                </div>
+                
+                <div class="carousel-item">
+                  <div
+                    class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                  >
+                    <img
+                      class="h-10 pb-1"
+                      src="/assets/images/icons/bench.png"
+                    />
+                    <span class="font-normal mt-2">Sitting</span>
+                  </div>
+                </div>
+                
+                <div class="carousel-item">
+                  <div
+                    class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                  >
+                    <img
+                      class="h-10 pb-1"
+                      src="/assets/images/icons/rubbish-bin.png"
+                    />
+                    <span class="font-normal mt-2">Rubbish Bin</span>
+                  </div>
+                </div>
+                
+                <div class="carousel-item">
+                  <div
+                    class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                  >
+                    <img
+                      class="h-10 pb-1"
+                      src="/assets/images/icons/padded-floor.png"
+                    />
+                    <span class="font-normal mt-2">Padded Floor</span>
+                  </div>
+                </div>
+                
+                <div class="carousel-item">
+                  <div
+                    class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                  >
+                    <img
+                      class="h-10 pb-1"
+                      src="/assets/images/icons/24-hours.png"
+                    />
+                    <span class="font-normal mt-2">24h Access</span>
+                  </div>
+                </div>
+                
               </div>
             </div>
           </div>
         </div>
-        <!-- <div class="w-full">
+      </div>
+      <!-- <div class="w-full">
           <div class="p-2">
             <div role="tablist" class="tabs tabs-bordered">
               <input
@@ -443,53 +557,52 @@
             </div>
           </div>
         </div> -->
-        <div class="w-full">
-          <div role="tablist" class="tabs tabs-bordered">
-            <input
-              type="radio"
-              name="my_tabs_3"
-              role="tab"
-              class="tab pb-8 text-base whitespace-nowrap"
-              aria-label="Location"
-              checked
-            />
-            <div role="tabpanel" class="tab-content mt-4">
-              <div id="map" class="top-0 left-0 h-72"></div>
-            </div>
+      <div class="w-full">
+        <div role="tablist" class="tabs tabs-bordered">
+          <input
+            type="radio"
+            name="my_tabs_3"
+            role="tab"
+            class="tab pb-8 text-base whitespace-nowrap"
+            aria-label="Location"
+            checked
+          />
+          <div role="tabpanel" class="tab-content mt-4">
+            <div id="map" class="top-0 left-0 h-72"></div>
           </div>
         </div>
-        <div class="w-full">
-          <div role="tablist" class="tabs tabs-bordered">
-            <input
-              type="radio"
-              name="my_tabs_4"
-              role="tab"
-              class="tab pb-8 text-base whitespace-nowrap"
-              aria-label="Weather"
-              checked
-            />
-            <div role="tabpanel" class="tab-content mt-4">
-              <div class="flex overflow-x-auto gap-4 no-scrollbar">
-                <div class="w-2/5 h-36 shrink-0">
-                  <div
-                    class="flex flex-col h-full font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
-                  >
-                    <span class="font-normal mt-2">Sunny</span>
-                  </div>
+      </div>
+      <div class="w-full">
+        <div role="tablist" class="tabs tabs-bordered">
+          <input
+            type="radio"
+            name="my_tabs_4"
+            role="tab"
+            class="tab pb-8 text-base whitespace-nowrap"
+            aria-label="Weather"
+            checked
+          />
+          <div role="tabpanel" class="tab-content mt-4">
+            <div class="flex overflow-x-auto gap-4 no-scrollbar">
+              <div class="w-2/5 h-36 shrink-0">
+                <div
+                  class="flex flex-col h-full font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                >
+                  <span class="font-normal mt-2">Sunny</span>
                 </div>
-                <div class="w-2/5 h-36 shrink-0">
-                  <div
-                    class="flex flex-col h-full font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
-                  >
-                    <span class="font-normal mt-2">Sunny</span>
-                  </div>
+              </div>
+              <div class="w-2/5 h-36 shrink-0">
+                <div
+                  class="flex flex-col h-full font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                >
+                  <span class="font-normal mt-2">Sunny</span>
                 </div>
-                <div class="w-2/5 h-36 shrink-0">
-                  <div
-                    class="flex flex-col h-full font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
-                  >
-                    <span class="font-normal mt-2">Sunny</span>
-                  </div>
+              </div>
+              <div class="w-2/5 h-36 shrink-0">
+                <div
+                  class="flex flex-col h-full font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                >
+                  <span class="font-normal mt-2">Sunny</span>
                 </div>
               </div>
             </div>
