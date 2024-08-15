@@ -14,9 +14,13 @@
   </head>
   <body class="md:overflow-hidden">
     <div class="flex flex-col min-h-full h-full">
-      <nav class="container flex flex-row mt-2 mb-2">
-  <div class="flex-grow text-lg font-bold"><a href="/">Parks.pt</a></div>
-</nav>
+      <div class="w-full bg-green-700">
+  <nav class="container mx-auto flex flex-row py-2">
+    <div class="flex-grow px-4 md:px-0 text-lg font-bold text-gray-200">
+      <a href="/">Parks.pt</a>
+    </div>
+  </nav>
+</div>
 
       <div
         class="container mx-auto border-gray-100 border-t-2 flex flex-col grow"
@@ -219,7 +223,7 @@
           <div class="px-4 md:px-0 md:pl-4 md:w-1/2 md:shadow">
             <div x-show="isLoading"></div>
             <div
-              class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:max-h-screen md:overflow-y-auto md:pb-32"
+              class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:max-h-screen md:overflow-y-auto md:pb-32 md:pr-4"
               x-show="window.innerWidth > 767 || view === 'list'"
             >
               <div

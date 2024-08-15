@@ -8,11 +8,15 @@
     <script src="/assets/js/leaflet.min.js"></script>
   </head>
   <body>
-    <nav class="container flex flex-row mt-2 mb-2">
-  <div class="flex-grow text-lg font-bold"><a href="/">Parks.pt</a></div>
-</nav>
+    <div class="w-full bg-green-700">
+  <nav class="container mx-auto flex flex-row py-2">
+    <div class="flex-grow px-4 md:px-0 text-lg font-bold text-gray-200">
+      <a href="/">Parks.pt</a>
+    </div>
+  </nav>
+</div>
 
-    <div class="container mx-auto border-gray-100 border-t-2">
+    <div class="container mx-auto">
       <div class="relative">
         <a
           class="md:hidden"
@@ -333,7 +337,7 @@
           </div>
         </div>
       </div>
-      <div class="w-full">
+      <div class="w-full md:w-4/6">
         <span>A small playground situated in front of the Braga court house. The square is surrounded by open areas, grass, palm trees, and a couple of water features. As the playground is small, it is only suitable for a small number of children at the same time.</span>
       </div>
       <div class="md:hidden w-full">
@@ -353,7 +357,7 @@
           
         </div>
       </div>
-      <div class="w-full">
+      <div class="w-full md:w-4/6">
         <div role="tablist" class="tabs tabs-bordered">
           <input
             type="radio"
@@ -365,7 +369,9 @@
           />
           <div role="tabpanel" class="tab-content mt-4">
             <div class="grid">
-              <div class="carousel space-x-4">
+              <div
+                class="carousel space-x-4 md:flex md:flex-wrap md:overflow-auto md:space-x-0 md:gap-4"
+              >
                 
                 <div class="carousel-item">
                   <div
@@ -415,7 +421,9 @@
           />
           <div role="tabpanel" class="tab-content mt-4">
             <div class="grid">
-              <div class="carousel space-x-4">
+              <div
+                class="carousel space-x-4 md:flex md:flex-wrap md:overflow-auto md:space-x-0 md:gap-4"
+              >
                 
                 <div class="carousel-item">
                   <div
@@ -557,7 +565,7 @@
             </div>
           </div>
         </div> -->
-      <div class="w-full">
+      <div class="w-full md:w-4/6">
         <div role="tablist" class="tabs tabs-bordered">
           <input
             type="radio"
@@ -568,11 +576,16 @@
             checked
           />
           <div role="tabpanel" class="tab-content mt-4">
+            <div class="mb-2">
+              <span class="text-sm"
+                >Praça da Justiça 155, Braga</span
+              >
+            </div>
             <div id="map" class="top-0 left-0 h-72"></div>
           </div>
         </div>
       </div>
-      <div class="w-full">
+      <div class="w-full md:w-4/6">
         <div role="tablist" class="tabs tabs-bordered">
           <input
             type="radio"
