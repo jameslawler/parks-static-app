@@ -1,0 +1,671 @@
+<html>
+  <head>
+    <title>Parks.pt</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/tailwind.css" />
+    <script src="/assets/js/alpine.min.js" defer></script>
+    <link rel="stylesheet" href="/assets/css/leaflet.css" />
+    <script src="/assets/js/leaflet.min.js"></script>
+  </head>
+  <body>
+    <div class="w-full bg-green-700">
+  <nav class="container mx-auto flex flex-row py-2">
+    <div class="flex-grow px-4 md:px-0 text-lg font-bold text-gray-200">
+      <a href="/">Parks.pt</a>
+    </div>
+  </nav>
+</div>
+
+    <div class="container mx-auto">
+      <div class="relative">
+        <a
+          class="md:hidden"
+          x-data
+          x-bind:href="`/parks/${window.location.search.toString()}`"
+        >
+          <button
+            class="btn btn-md btn-circle bg-gray-200/75 absolute z-20 top-4 left-4"
+          >
+            <img src="/assets/images/svg/down-arrow.svg" class="rotate-90" />
+          </button>
+        </a>
+        <a
+          class="md:hidden"
+          x-data
+          x-bind:href="`photos/${window.location.search.toString()}`"
+        >
+          <div id="images" class="carousel w-full">
+            
+            <div class="carousel-item w-full">
+              <picture class="w-full">
+                <source
+                  media="(max-width: 767px)"
+                  srcset="images/01-384-288.avif, images/01-384-288.jpeg"
+                />
+                <source
+                  media="(min-width:768px)"
+                  srcset="images/01-768-576.avif, images/01-768-576.jpeg"
+                />
+                <img
+                  class="object-cover w-full h-72"
+                  src="images/01-1344-896.jpeg"
+                  alt="Imagen de Braga"
+                />
+              </picture>
+            </div>
+            
+            <div class="carousel-item w-full">
+              <picture class="w-full">
+                <source
+                  media="(max-width: 767px)"
+                  srcset="images/02-384-288.avif, images/02-384-288.jpeg"
+                />
+                <source
+                  media="(min-width:768px)"
+                  srcset="images/02-768-576.avif, images/02-768-576.jpeg"
+                />
+                <img
+                  class="object-cover w-full h-72"
+                  src="images/02-1344-896.jpeg"
+                  alt="Imagen de Braga"
+                />
+              </picture>
+            </div>
+            
+            <div class="carousel-item w-full">
+              <picture class="w-full">
+                <source
+                  media="(max-width: 767px)"
+                  srcset="images/03-384-288.avif, images/03-384-288.jpeg"
+                />
+                <source
+                  media="(min-width:768px)"
+                  srcset="images/03-768-576.avif, images/03-768-576.jpeg"
+                />
+                <img
+                  class="object-cover w-full h-72"
+                  src="images/03-1344-896.jpeg"
+                  alt="Imagen de Braga"
+                />
+              </picture>
+            </div>
+            
+            <div class="carousel-item w-full">
+              <picture class="w-full">
+                <source
+                  media="(max-width: 767px)"
+                  srcset="images/04-384-288.avif, images/04-384-288.jpeg"
+                />
+                <source
+                  media="(min-width:768px)"
+                  srcset="images/04-768-576.avif, images/04-768-576.jpeg"
+                />
+                <img
+                  class="object-cover w-full h-72"
+                  src="images/04-1344-896.jpeg"
+                  alt="Imagen de Braga"
+                />
+              </picture>
+            </div>
+            
+            <div class="carousel-item w-full">
+              <picture class="w-full">
+                <source
+                  media="(max-width: 767px)"
+                  srcset="images/05-384-288.avif, images/05-384-288.jpeg"
+                />
+                <source
+                  media="(min-width:768px)"
+                  srcset="images/05-768-576.avif, images/05-768-576.jpeg"
+                />
+                <img
+                  class="object-cover w-full h-72"
+                  src="images/05-1344-896.jpeg"
+                  alt="Imagen de Braga"
+                />
+              </picture>
+            </div>
+            
+            <div class="carousel-item w-full">
+              <picture class="w-full">
+                <source
+                  media="(max-width: 767px)"
+                  srcset="images/06-384-288.avif, images/06-384-288.jpeg"
+                />
+                <source
+                  media="(min-width:768px)"
+                  srcset="images/06-768-576.avif, images/06-768-576.jpeg"
+                />
+                <img
+                  class="object-cover w-full h-72"
+                  src="images/06-1344-896.jpeg"
+                  alt="Imagen de Braga"
+                />
+              </picture>
+            </div>
+            
+            <div class="carousel-item w-full">
+              <picture class="w-full">
+                <source
+                  media="(max-width: 767px)"
+                  srcset="images/07-384-288.avif, images/07-384-288.jpeg"
+                />
+                <source
+                  media="(min-width:768px)"
+                  srcset="images/07-768-576.avif, images/07-768-576.jpeg"
+                />
+                <img
+                  class="object-cover w-full h-72"
+                  src="images/07-1344-896.jpeg"
+                  alt="Imagen de Braga"
+                />
+              </picture>
+            </div>
+            
+            <div class="carousel-item w-full">
+              <picture class="w-full">
+                <source
+                  media="(max-width: 767px)"
+                  srcset="images/08-384-288.avif, images/08-384-288.jpeg"
+                />
+                <source
+                  media="(min-width:768px)"
+                  srcset="images/08-768-576.avif, images/08-768-576.jpeg"
+                />
+                <img
+                  class="object-cover w-full h-72"
+                  src="images/08-1344-896.jpeg"
+                  alt="Imagen de Braga"
+                />
+              </picture>
+            </div>
+            
+            <div class="carousel-item w-full">
+              <picture class="w-full">
+                <source
+                  media="(max-width: 767px)"
+                  srcset="images/09-384-288.avif, images/09-384-288.jpeg"
+                />
+                <source
+                  media="(min-width:768px)"
+                  srcset="images/09-768-576.avif, images/09-768-576.jpeg"
+                />
+                <img
+                  class="object-cover w-full h-72"
+                  src="images/09-1344-896.jpeg"
+                  alt="Imagen de Braga"
+                />
+              </picture>
+            </div>
+            
+            <div class="carousel-item w-full">
+              <picture class="w-full">
+                <source
+                  media="(max-width: 767px)"
+                  srcset="images/10-384-288.avif, images/10-384-288.jpeg"
+                />
+                <source
+                  media="(min-width:768px)"
+                  srcset="images/10-768-576.avif, images/10-768-576.jpeg"
+                />
+                <img
+                  class="object-cover w-full h-72"
+                  src="images/10-1344-896.jpeg"
+                  alt="Imagen de Braga"
+                />
+              </picture>
+            </div>
+            
+          </div>
+          <div
+            class="md:hidden absolute z-20 bottom-4 right-4 text-white font-bold bg-gray-700/75 rounded-md pl-2 pr-2 pt-1 pb-1"
+          >
+            <span id="image-count">1</span> of 10
+          </div>
+        </a>
+      </div>
+      <div class="flex flex-col p-4 md:px-0 gap-6">
+        <div class="w-full flex md:flex-col">
+          <div class="w-full">
+            <h3 class="text-md md:text-xl font-bold">Parque Infantil do Parque da Ponte - São Lázaro</h3>
+            <h4 class="text-sm">
+              <span>Avenida Doutor Francisco Pires Gonçalves, Braga</span>
+            </h4>
+          </div>
+          <div class="hidden md:flex flex-row gap-4 mt-6">
+            <div class="grid grid-cols-4 auto-rows-fr gap-2">
+                <div  class="col-span-3 row-span-3"  >
+              <a
+                href="images/01-1344-896.jpeg"
+              >
+                <picture class="w-full">
+                  <source
+                    media="(max-width: 767px)"
+                    srcset="images/01-384-288.avif, images/01-384-288.jpeg"
+                  />
+                  <source
+                    media="(min-width:768px)"
+                    srcset="images/01-768-576.avif, images/01-768-576.jpeg"
+                  />
+                  <img
+                    class="object-cover w-full h-72 md:h-full rounded-md"
+                    src="images/01-1344-896.jpeg"
+                    alt="Imagen de Braga"
+                  />
+                </picture>
+              </a>
+              
+            </div>
+               <div  >
+              <a
+                href="images/02-1344-896.jpeg"
+              >
+                <picture class="w-full">
+                  <source
+                    media="(max-width: 767px)"
+                    srcset="images/02-384-288.avif, images/02-384-288.jpeg"
+                  />
+                  <source
+                    media="(min-width:768px)"
+                    srcset="images/02-768-576.avif, images/02-768-576.jpeg"
+                  />
+                  <img
+                    class="object-cover w-full h-72 md:h-full rounded-md"
+                    src="images/02-1344-896.jpeg"
+                    alt="Imagen de Braga"
+                  />
+                </picture>
+              </a>
+              
+            </div>
+               <div  >
+              <a
+                href="images/03-1344-896.jpeg"
+              >
+                <picture class="w-full">
+                  <source
+                    media="(max-width: 767px)"
+                    srcset="images/03-384-288.avif, images/03-384-288.jpeg"
+                  />
+                  <source
+                    media="(min-width:768px)"
+                    srcset="images/03-768-576.avif, images/03-768-576.jpeg"
+                  />
+                  <img
+                    class="object-cover w-full h-72 md:h-full rounded-md"
+                    src="images/03-1344-896.jpeg"
+                    alt="Imagen de Braga"
+                  />
+                </picture>
+              </a>
+              
+            </div>
+               <div   class="relative text-center" >
+              <a
+                href="images/04-1344-896.jpeg"
+              >
+                <picture class="w-full">
+                  <source
+                    media="(max-width: 767px)"
+                    srcset="images/04-384-288.avif, images/04-384-288.jpeg"
+                  />
+                  <source
+                    media="(min-width:768px)"
+                    srcset="images/04-768-576.avif, images/04-768-576.jpeg"
+                  />
+                  <img
+                    class="object-cover w-full h-72 md:h-full rounded-md"
+                    src="images/04-1344-896.jpeg"
+                    alt="Imagen de Braga"
+                  />
+                </picture>
+              </a>
+              
+              <a
+                x-data
+                x-bind:href="`photos/${window.location.search.toString()}`"
+                ><div
+                  class="absolute flex flex-col justify-center w-full h-full top-0 left-0 text-white bg-gray-500/60 rounded-md"
+                >
+                  See all photos (10)
+                </div></a
+              >
+              
+            </div>
+                         
+          </div>
+        </div>
+      </div>
+      <div class="w-full">
+        <div class="flex">
+          <div class="w-1/3">
+            <div class="text-sm">Size</div>
+            <div class="text-sm font-bold">
+              Large
+            </div>
+          </div>
+          <div class="w-1/3">
+            <div class="text-sm">Surface</div>
+            <div class="text-sm font-bold">
+              Padded Rubber
+            </div>
+          </div>
+          <div class="w-1/3">
+            <div class="text-sm">Modern</div>
+            <div class="text-sm font-bold">
+              No
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full">
+        <span>Located in the Parque da Ponte, this is one of two playgrounds and is for younger children.</span>
+      </div>
+      <div class="w-full">
+        <div class="flex flex-wrap gap-4">
+          
+          <div class="badge badge-lg bg-gray-100">
+            Popular
+          </div>
+          
+          <div class="badge badge-lg bg-gray-100">
+            Picnic Area
+          </div>
+          
+          <div class="badge badge-lg bg-gray-100">
+            Lake
+          </div>
+          
+          <div class="badge badge-lg bg-gray-100">
+            24h Access
+          </div>
+          
+        </div>
+      </div>
+      <div class="w-full">
+        <div role="tablist" class="tabs tabs-bordered">
+          <input
+            type="radio"
+            name="my_tabs_1"
+            role="tab"
+            class="tab pb-8 text-base whitespace-nowrap"
+            aria-label="Equipment (4)"
+            checked
+          />
+          <div role="tabpanel" class="tab-content mt-4">
+            <div class="grid">
+              <div
+                class="carousel space-x-4 md:flex md:flex-wrap md:overflow-auto md:space-x-0 md:gap-4"
+              >
+                
+                <div class="carousel-item">
+                  <div
+                    class="flex flex-col w-36 h-24 text-sm bg-gray-100 rounded-md items-center justify-center"
+                  >
+                    <img
+                      class="h-10 pb-1"
+                      src="/assets/images/icons/playhouse.png"
+                    />
+                    <span class="mt-2">Play House</span>
+                  </div>
+                </div>
+                
+                <div class="carousel-item">
+                  <div
+                    class="flex flex-col w-36 h-24 text-sm bg-gray-100 rounded-md items-center justify-center"
+                  >
+                    <img
+                      class="h-10 pb-1"
+                      src="/assets/images/icons/swing.png"
+                    />
+                    <span class="mt-2">Swings</span>
+                  </div>
+                </div>
+                
+                <div class="carousel-item">
+                  <div
+                    class="flex flex-col w-36 h-24 text-sm bg-gray-100 rounded-md items-center justify-center"
+                  >
+                    <img
+                      class="h-10 pb-1"
+                      src="/assets/images/icons/slide.png"
+                    />
+                    <span class="mt-2">Slides</span>
+                  </div>
+                </div>
+                
+                <div class="carousel-item">
+                  <div
+                    class="flex flex-col w-36 h-24 text-sm bg-gray-100 rounded-md items-center justify-center"
+                  >
+                    <img
+                      class="h-10 pb-1"
+                      src="/assets/images/icons/ropes.png"
+                    />
+                    <span class="mt-2">Ropes</span>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <input
+            type="radio"
+            name="my_tabs_1"
+            role="tab"
+            class="tab pb-8 text-base whitespace-nowrap"
+            aria-label="Facilities (5)"
+          />
+          <div role="tabpanel" class="tab-content mt-4">
+            <div class="grid">
+              <div
+                class="carousel space-x-4 md:flex md:flex-wrap md:overflow-auto md:space-x-0 md:gap-4"
+              >
+                
+                <div class="carousel-item">
+                  <div
+                    class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                  >
+                    <img
+                      class="h-10 pb-1"
+                      src="/assets/images/icons/water-fountain.png"
+                    />
+                    <span class="font-normal mt-2">Water Fountain</span>
+                  </div>
+                </div>
+                
+                <div class="carousel-item">
+                  <div
+                    class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                  >
+                    <img
+                      class="h-10 pb-1"
+                      src="/assets/images/icons/bench.png"
+                    />
+                    <span class="font-normal mt-2">Sitting</span>
+                  </div>
+                </div>
+                
+                <div class="carousel-item">
+                  <div
+                    class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                  >
+                    <img
+                      class="h-10 pb-1"
+                      src="/assets/images/icons/rubbish-bin.png"
+                    />
+                    <span class="font-normal mt-2">Rubbish Bin</span>
+                  </div>
+                </div>
+                
+                <div class="carousel-item">
+                  <div
+                    class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                  >
+                    <img
+                      class="h-10 pb-1"
+                      src="/assets/images/icons/padded-floor.png"
+                    />
+                    <span class="font-normal mt-2">Padded Floor</span>
+                  </div>
+                </div>
+                
+                <div class="carousel-item">
+                  <div
+                    class="flex flex-col w-36 h-24 font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                  >
+                    <img
+                      class="h-10 pb-1"
+                      src="/assets/images/icons/24-hours.png"
+                    />
+                    <span class="font-normal mt-2">24h Access</span>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="w-full">
+          <div class="p-2">
+            <div role="tablist" class="tabs tabs-bordered">
+              <input
+                type="radio"
+                name="my_tabs_2"
+                role="tab"
+                class="tab pb-8 text-base whitespace-nowrap"
+                aria-label="Near By (2)"
+                checked
+              />
+              <div role="tabpanel" class="tab-content mt-4">
+                <span class="font-bold">Cafes & Restaurants</span>
+                <ul>
+                  
+                  <li class="flex">
+                    <span class="flex-grow">one</span
+                    ><span class="mr-4">5min (100m)</span>
+                  </li>
+                  
+                  <li class="flex">
+                    <span class="flex-grow">two</span
+                    ><span class="mr-4">5min (100m)</span>
+                  </li>
+                  
+                </ul>
+              </div>
+              <input
+                type="radio"
+                name="my_tabs_2"
+                role="tab"
+                class="tab pb-8 text-base whitespace-nowrap"
+                aria-label="Transport"
+              />
+              <div role="tabpanel" class="tab-content mt-4">
+                <div>
+                  <span class="font-bold">Public Transport</span>
+                  <ul>
+                    
+                    <li class="flex">
+                      <span class="flex-grow">busone</span
+                      ><span class="mr-4">5min (100m)</span>
+                    </li>
+                    
+                    <li class="flex">
+                      <span class="flex-grow">bustwo</span
+                      ><span class="mr-4">5min (100m)</span>
+                    </li>
+                    
+                  </ul>
+                </div>
+                <div></div>
+                <span class="font-bold">Parking</span>
+                <ul>
+                  <li class="flex">
+                    <span class="flex-grow">Street Parking</span
+                    ><span class="mr-4"></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      <div class="w-full">
+        <div role="tablist" class="tabs tabs-bordered">
+          <input
+            type="radio"
+            name="my_tabs_3"
+            role="tab"
+            class="tab pb-8 text-base whitespace-nowrap"
+            aria-label="Location"
+            checked
+          />
+          <div role="tabpanel" class="tab-content mt-4">
+            <div class="mb-2">
+              <span class="text-sm"
+                >Avenida Doutor Francisco Pires Gonçalves, Braga</span
+              >
+            </div>
+            <div id="map" class="top-0 left-0 h-72"></div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full">
+        <div role="tablist" class="tabs tabs-bordered">
+          <input
+            type="radio"
+            name="my_tabs_4"
+            role="tab"
+            class="tab pb-8 text-base whitespace-nowrap"
+            aria-label="Weather"
+            checked
+          />
+          <div role="tabpanel" class="tab-content mt-4">
+            <div class="flex overflow-x-auto gap-4 no-scrollbar">
+              <div class="w-2/5 h-36 shrink-0">
+                <div
+                  class="flex flex-col h-full font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                >
+                  <span class="font-normal mt-2">Sunny</span>
+                </div>
+              </div>
+              <div class="w-2/5 h-36 shrink-0">
+                <div
+                  class="flex flex-col h-full font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                >
+                  <span class="font-normal mt-2">Sunny</span>
+                </div>
+              </div>
+              <div class="w-2/5 h-36 shrink-0">
+                <div
+                  class="flex flex-col h-full font-bold text-sm bg-gray-100 rounded-md items-center justify-center"
+                >
+                  <span class="font-normal mt-2">Sunny</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    var carousel = document.querySelector("#images");
+    var imageCount = document.querySelector("#image-count");
+
+    carousel.addEventListener("scroll", function () {
+      const selectedIndex = Math.ceil(
+        carousel.scrollLeft / carousel.offsetWidth
+      );
+      imageCount.innerText = selectedIndex + 1;
+    });
+
+    const map = L.map("map").setView([41.541024, -8.421766], 15);
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution:
+        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    }).addTo(map);
+    L.marker([41.541024, -8.421766]).addTo(map);
+  </script>
+</html>
